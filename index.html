@@ -347,6 +347,16 @@
             margin: 20px 0;
         }
         
+        .data-table caption {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gp-green);
+            text-align: left;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            caption-side: top;
+        }
+        
         .data-table th, .data-table td {
             border: 1px solid var(--gp-light);
             padding: 12px 15px;
@@ -667,6 +677,34 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .toggle-switch-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Remove extra footer container */
+        .footer-container-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     </style>
 
     <script>
@@ -743,15 +781,30 @@
                     header.addEventListener('click', function() {
                         const content = this.nextElementSibling;
                         const icon = this.querySelector('.pill-icon');
+                        const pillTitle = this.querySelector('.pill-title').textContent;
                         
                         // Toggle active class
+                        const isExpanding = !content.classList.contains('active');
                         content.classList.toggle('active');
+                        
+                        // Update aria-expanded attribute for accessibility
+                        this.setAttribute('aria-expanded', content.classList.contains('active'));
                         
                         // Rotate icon
                         if (content.classList.contains('active')) {
                             icon.textContent = '−';
+                            icon.setAttribute('aria-label', 'Collapse ' + pillTitle);
                         } else {
                             icon.textContent = '+';
+                            icon.setAttribute('aria-label', 'Expand ' + pillTitle);
+                        }
+                    });
+                    
+                    // Add keyboard support for accessibility
+                    header.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.click();
                         }
                     });
                 });
@@ -888,9 +941,12 @@
     <header>
         <div class="theme-toggle">
             <span class="toggle-label" id="light-label">Light</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="theme-toggle">
-                <span class="toggle-slider"></span>
+            <label class="toggle-switch-label" for="theme-toggle">
+                <span class="sr-only">Toggle theme between light and dark mode</span>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="theme-toggle" aria-label="Switch between light and dark theme">
+                    <span class="toggle-slider"></span>
+                </div>
             </label>
             <span class="toggle-label" id="dark-label">Dark</span>
         </div>
@@ -898,9 +954,11 @@
         <div class="header-content">
            <div class="logo-container no-dyslexia-effect">
     <!-- Embedded Green Party Logo -->
-    <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+    <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-labelledby="logo-title logo-subtitle" role="img">
+        <title id="logo-title">GreenMeans Logo</title>
+        <desc id="logo-desc">GreenMeans political organisation logo featuring a green leaf icon with the text "GreenMeans Bold Politics"</desc>
         <!-- Your PNG image -->
-        <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" />
+        <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="Green leaf icon representing the GreenMeans political organisation" />
         <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#00A651" class="logo-text">GreenMeans</text>
         <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" fill="#2C2A29" class="logo-subtext">Bold Politics</text>
     </svg>
@@ -937,11 +995,11 @@
                 
                 <div class="privacy-pills">
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="data-controller-content">
                             <h3 class="pill-title">1. Data Controller</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="data-controller-content">
                             <p>The data controller for this website is:</p>
                             <ul>
                                 <li><strong>Entity:</strong> GreenMeans, a sole proprietor</li>
@@ -951,13 +1009,14 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="information-collected-content">
                             <h3 class="pill-title">2. Information We Collect</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="information-collected-content">
                             <p>We collect minimal data to operate our website effectively:</p>
                             <table class="data-table">
+                                <caption>Types of Data We Collect</caption>
                                 <thead>
                                     <tr>
                                         <th>Data Type</th>
@@ -1017,13 +1076,14 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="purpose-basis-content">
                             <h3 class="pill-title">3. Purpose & Lawful Basis for Processing</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="purpose-basis-content">
                             <p>We process data for the following purposes:</p>
                             <table class="data-table">
+                                <caption>Data Processing Purposes and Legal Bases</caption>
                                 <thead>
                                     <tr>
                                         <th>Purpose</th>
@@ -1058,11 +1118,11 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="third-party-services-content">
                             <h3 class="pill-title">4. Third-Party Services</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="third-party-services-content">
                             <p>We use the following third-party services:</p>
                             <ul>
                                 <li><strong>Domain Registrar:</strong> OVH</li>
@@ -1081,13 +1141,14 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="data-retention-content">
                             <h3 class="pill-title">5. Data Retention</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="data-retention-content">
                             <p>We retain data only as long as necessary:</p>
                             <table class="data-table">
+                                <caption>Data Retention Periods</caption>
                                 <thead>
                                     <tr>
                                         <th>Data Type</th>
@@ -1125,11 +1186,11 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="international-transfers-content">
                             <h3 class="pill-title">6. International Data Transfers</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="international-transfers-content">
                             <p>Yes, data is transferred to the USA via:</p>
                             <ul>
                                 <li><strong>Cloudflare/GitHub:</strong> The transfer is safeguarded by Cloudflare's and GitHub's participation in the EU-U.S. Data Privacy Framework.</li>
@@ -1141,11 +1202,11 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="your-rights-content">
                             <h3 class="pill-title">7. Your Rights</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="your-rights-content">
                             <p>Under data protection law, you have rights including:</p>
                             <ul>
                                 <li>Your right of access - You have the right to ask us for copies of your personal information.</li>
@@ -1164,11 +1225,11 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="cookies-content">
                             <h3 class="pill-title">8. Cookies</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="cookies-content">
                             <p>Our website uses:</p>
                             <ul>
                                 <li><strong>Essential cookies:</strong> Required for the basic functioning of our website</li>
@@ -1183,21 +1244,21 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="policy-changes-content">
                             <h3 class="pill-title">9. Changes to This Privacy Policy</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="policy-changes-content">
                             <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
                         </div>
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header">
+                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="contact-us-content">
                             <h3 class="pill-title">10. Contact Us</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
-                        <div class="pill-content">
+                        <div class="pill-content" id="contact-us-content">
                             <p>If you have any questions about this Privacy Policy, please contact us:</p>
                             <ul>
                                 <li>By email: admin@greenmeans.ovh</li>
@@ -1210,7 +1271,7 @@
     </main>
 
     <footer>
-        <div class="footer-container">
+        <div class="footer-container-wrapper">
             <div class="accessibility-toggle">
                 <button class="toggle-btn" id="dyslexia-toggle" aria-pressed="false">
                     Dyslexia-Friendly Mode: OFF
@@ -1218,14 +1279,15 @@
             </div>
             
             <!-- GreenMeans Logo -->
-           <div class="footer-container">
-    <div class="footer-logo">
-        <svg class="footer-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
-            <!-- new PNG image -->
-            <image href="https://greenmeans.ovh/favicon.png" x="5" y="10" width="30" height="20" />
-            <text x="45" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="white">GreenMeans</text>
-        </svg>
-    </div>
+            <div class="footer-logo-container">
+                <svg class="footer-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" aria-labelledby="footer-logo-title" role="img">
+                    <title id="footer-logo-title">GreenMeans Logo</title>
+                    <desc id="footer-logo-desc">GreenMeans organisation logo</desc>
+                    <!-- new PNG image -->
+                    <image href="https://greenmeans.ovh/favicon.png" x="5" y="10" width="30" height="20" alt="Green leaf icon representing GreenMeans" />
+                    <text x="45" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="white">GreenMeans</text>
+                </svg>
+            </div>
             
             <p class="copyright">© 2025 GreenMeans. All rights reserved.</p>
         </div>
