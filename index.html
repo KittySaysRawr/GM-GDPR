@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy for GreenMeans. We are committed to protecting your privacy and ensuring transparency about how we handle your data.">
     <title>Privacy Policy – GreenMeans</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
@@ -10,44 +11,46 @@
     <style>
         /* Official Green Party Brand Colours */
         :root {
-            --gp-green: #00A651; /* Primary Green */
-            --gp-light-green: #8DC63F; /* Secondary Green */
-            --gp-yellow: #FFF200; /* Accent Yellow */
-            --gp-dark: #2C2A29; /* Dark Grey/Black */
-            --gp-light: #F1F1F1; /* Light Grey */
-            --gp-white: #FFFFFF; /* White */
+            --gp-green: #008040; /* Darkened primary green for better contrast */
+            --gp-light-green: #7DB63C; /* Darkened secondary green */
+            --gp-yellow: #E6D700; /* Darkened yellow for better contrast */
+            --gp-dark: #1A1A1A; /* Darker for better contrast */
+            --gp-light: #F1F1F1;
+            --gp-white: #FFFFFF;
             
             /* Light mode variables (default) */
             --bg-color: var(--gp-white);
             --text-color: var(--gp-dark);
             --header-bg: var(--gp-white);
             --card-bg: var(--gp-white);
-            --footer-bg: var(--gp-dark);
+            --footer-bg: #111111;
             --footer-text: var(--gp-white);
             --pill-bg: var(--gp-white);
-            --pill-hover: #f8f8f8;
-            --subpill-bg: var(--gp-light);
-            --rationale-bg: rgba(141, 198, 63, 0.1);
+            --pill-hover: #f0f0f0;
+            --subpill-bg: #f9f9f9;
+            --rationale-bg: rgba(125, 182, 60, 0.1);
             --shadow-color: rgba(0, 0, 0, 0.08);
             --shadow-hover: rgba(0, 0, 0, 0.12);
-            --link-color: #0066cc;
+            --link-color: #0066CC;
+            --focus-outline: 3px solid var(--gp-yellow);
         }
         
         /* Dark mode variables */
         [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --header-bg: #1e1e1e;
-            --card-bg: #1e1e1e;
-            --footer-bg: #0a0a0a;
-            --footer-text: #e0e0e0;
-            --pill-bg: #2a2a2a;
-            --pill-hover: #333333;
-            --subpill-bg: #2a2a2a;
-            --rationale-bg: rgba(141, 198, 63, 0.15);
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --shadow-hover: rgba(0, 0, 0, 0.5);
-            --link-color: #66b3ff;
+            --bg-color: #0A0A0A;
+            --text-color: #F0F0F0;
+            --header-bg: #1A1A1A;
+            --card-bg: #1A1A1A;
+            --footer-bg: #050505;
+            --footer-text: #F0F0F0;
+            --pill-bg: #222222;
+            --pill-hover: #2A2A2A;
+            --subpill-bg: #252525;
+            --rationale-bg: rgba(125, 182, 60, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --shadow-hover: rgba(0, 0, 0, 0.6);
+            --link-color: #4DA6FF;
+            --focus-outline: 3px solid var(--gp-yellow);
         }
         
         * {
@@ -57,17 +60,56 @@
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: 'Open Sans', sans-serif;
             color: var(--text-color);
             background-color: var(--bg-color);
             line-height: 1.6;
+            font-size: 18px;
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             color: var(--text-color);
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        /* Skip to main content link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 10px;
+            background: var(--gp-green);
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            z-index: 1001;
+            transition: top 0.3s;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .skip-link:focus {
+            top: 10px;
+            outline: var(--focus-outline);
+            outline-offset: 2px;
         }
         
         /* Header Styles */
@@ -106,28 +148,8 @@
         }
         
         .site-title h1 {
-            font-size: 3rem;
             color: var(--gp-green);
-            font-weight: 800;
             margin-bottom: 5px;
-            text-align: center;
-        }
-        
-        .bold-politics {
-            color: var(--gp-dark);
-            transition: color 0.3s;
-        }
-        
-        [data-theme="dark"] .bold-politics {
-            color: #FFFFFF;
-        }
-        
-        .logo-subtext {
-            transition: fill 0.3s;
-        }
-        
-        [data-theme="dark"] .logo-subtext {
-            fill: #FFFFFF;
         }
         
         nav ul {
@@ -145,14 +167,18 @@
             text-decoration: none;
             color: var(--text-color);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: color 0.3s;
-            padding: 5px 0;
+            padding: 8px 5px;
             position: relative;
+            border-radius: 4px;
         }
         
-        nav a:hover {
+        nav a:hover,
+        nav a:focus {
             color: var(--gp-green);
+            background-color: var(--pill-hover);
+            outline: none;
         }
         
         nav a.active {
@@ -180,9 +206,9 @@
         }
         
         .toggle-label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-color);
-            font-weight: 500;
+            font-weight: 600;
             transition: opacity 0.3s;
         }
 
@@ -206,7 +232,7 @@
             position: relative;
             display: inline-block;
             width: 60px;
-            height: 30px;
+            height: 34px;
         }
         
         .toggle-switch input {
@@ -222,7 +248,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #ccc;
+            background-color: #666;
             transition: .4s;
             border-radius: 34px;
         }
@@ -230,8 +256,8 @@
         .toggle-slider:before {
             position: absolute;
             content: "";
-            height: 22px;
-            width: 22px;
+            height: 26px;
+            width: 26px;
             left: 4px;
             bottom: 4px;
             background-color: white;
@@ -244,7 +270,12 @@
         }
         
         input:checked + .toggle-slider:before {
-            transform: translateX(30px);
+            transform: translateX(26px);
+        }
+        
+        .toggle-switch:focus-within .toggle-slider {
+            outline: var(--focus-outline);
+            outline-offset: 2px;
         }
         
         /* Hero Section */
@@ -262,16 +293,17 @@
         
         .hero h2 {
             font-size: 2.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--gp-white);
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 30px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
         
         /* Main Content */
@@ -288,9 +320,8 @@
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
         .section-title h2::after {
@@ -299,8 +330,8 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 5px;
             background-color: var(--gp-yellow);
         }
         
@@ -315,8 +346,7 @@
         
         .privacy-content h3 {
             color: var(--gp-green);
-            margin: 30px 0 15px;
-            font-size: 1.5rem;
+            margin: 30px 0 20px;
         }
         
         .privacy-content h3:first-child {
@@ -324,19 +354,21 @@
         }
         
         .privacy-content p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
         
-        .privacy-content ul {
-            padding-left: 20px;
-            margin-bottom: 20px;
+        .privacy-content ul,
+        .privacy-content ol {
+            padding-left: 30px;
+            margin-bottom: 25px;
         }
         
         .privacy-content li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            line-height: 1.7;
         }
         
-        /* Fix for contrast issues in lists */
         .privacy-content strong {
             color: var(--text-color);
             font-weight: 700;
@@ -345,82 +377,104 @@
         .last-updated {
             font-style: italic;
             color: var(--gp-green);
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 10px;
+            background-color: var(--rationale-bg);
+            border-radius: 6px;
         }
         
-        /* Link styling for better contrast */
-        a:not(.toggle-btn):not(nav a) {
+        /* Link styling */
+        a:not(.toggle-btn):not(nav a):not(.skip-link) {
             color: var(--link-color);
             text-decoration: underline;
             text-decoration-thickness: 2px;
-            text-underline-offset: 2px;
+            text-underline-offset: 4px;
             transition: color 0.3s, opacity 0.3s;
+            font-weight: 600;
         }
         
-        a:not(.toggle-btn):not(nav a):hover,
-        a:not(.toggle-btn):not(nav a):focus {
+        a:not(.toggle-btn):not(nav a):not(.skip-link):hover,
+        a:not(.toggle-btn):not(nav a):not(.skip-link):focus {
             color: var(--gp-green);
-            opacity: 0.9;
-            outline: 2px solid var(--gp-yellow);
-            outline-offset: 2px;
+            text-decoration-thickness: 3px;
+            outline: none;
         }
         
-        a:not(.toggle-btn):not(nav a):focus-visible {
-            outline: 2px solid var(--gp-yellow);
-            outline-offset: 2px;
+        a:not(.toggle-btn):not(nav a):not(.skip-link):focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: 4px;
+            text-decoration: none;
         }
         
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+        
+        .data-table caption {
+            text-align: left;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-size: 1.2rem;
         }
         
         .data-table th, .data-table td {
-            border: 1px solid var(--gp-light);
-            padding: 12px 15px;
+            border: 2px solid var(--gp-light);
+            padding: 16px 20px;
             text-align: left;
+            vertical-align: top;
         }
         
         .data-table th {
             background-color: var(--gp-green);
             color: white;
             font-weight: 700;
+            font-size: 1.1rem;
         }
         
         .data-table tr:nth-child(even) {
             background-color: var(--rationale-bg);
         }
         
-        /* Improve table text contrast */
         .data-table td {
             color: var(--text-color);
+        }
+        
+        [data-theme="dark"] .data-table th,
+        [data-theme="dark"] .data-table td {
+            border-color: #444;
         }
         
         /* Collapsible Pills */
         .privacy-pills {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             margin-bottom: 40px;
         }
         
         .privacy-pill {
             background-color: var(--pill-bg);
             border-radius: 8px;
-            box-shadow: 0 2px 6px var(--shadow-color);
+            box-shadow: 0 2px 8px var(--shadow-color);
             overflow: hidden;
             transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
         
         .privacy-pill:hover {
-            box-shadow: 0 4px 12px var(--shadow-hover);
+            box-shadow: 0 4px 16px var(--shadow-hover);
+            border-color: var(--gp-green);
         }
         
         .pill-header {
-            padding: 20px;
+            padding: 25px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -429,27 +483,36 @@
             transition: background-color 0.3s;
         }
         
-        .pill-header:hover {
+        .pill-header:hover,
+        .pill-header:focus {
             background-color: var(--pill-hover);
+            outline: none;
+        }
+        
+        .pill-header:focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: -2px;
         }
         
         .pill-title {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700; /* Increased for better contrast */
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 1.3rem;
             color: var(--text-color);
             margin: 0;
         }
         
         .pill-icon {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--gp-green);
             transition: transform 0.3s;
-            font-weight: 700; /* Improved contrast */
+            font-weight: 700;
+            min-width: 30px;
+            text-align: center;
         }
         
         .pill-content {
-            padding: 0 20px;
+            padding: 0 25px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
@@ -457,29 +520,30 @@
         }
         
         .pill-content.active {
-            padding: 20px;
-            max-height: 2000px;
+            padding: 25px;
+            max-height: 5000px;
         }
         
         .pill-content p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
-        .pill-content ul {
-            padding-left: 20px;
+        .pill-content ul,
+        .pill-content ol {
+            padding-left: 30px;
             margin-bottom: 20px;
         }
         
         .pill-content li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
-        /* Footer */
+        /* Footer - UPDATED LAYOUT */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
-            padding: 30px 20px 20px; /* Reduced padding */
-            margin-top: 40px;
+            padding: 40px 20px 30px;
+            margin-top: 60px;
         }
         
         .footer-container {
@@ -488,160 +552,61 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+            gap: 25px;
+        }
+        
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
         }
         
         .footer-logo-container {
-            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
         }
         
         .footer-logo {
-            height: 40px; /* Reduced height */
+            height: 75px; /* Increased size */
+            width: auto;
         }
         
         .copyright {
             text-align: center;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9); /* Improved contrast */
+            font-size: 1.1rem;
+            color: #FFFFFF;
+            opacity: 0.95;
+            font-weight: 500;
+            width: 100%;
+            order: 1; /* Logo first */
         }
         
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 12px 0;
-            }
-            
-            .header-content {
-                padding: 0 15px;
-            }
-            
-            .logo {
-                height: 45px;
-            }
-            
-            .logo-container {
-                margin-bottom: 10px;
-            }
-            
-            .site-title {
-                margin-bottom: 15px;
-            }
-            
-            .site-title h1 {
-                font-size: 1.6rem;
-                margin-bottom: 3px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-            }
-            
-            nav li {
-                margin: 0 8px 8px;
-            }
-            
-            nav a {
-                font-size: 0.9rem;
-            }
-            
-            .theme-toggle {
-                position: static;
-                margin-top: 12px;
-                justify-content: center;
-            }
-            
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .privacy-content {
-                padding: 25px;
-            }
-            
-            .data-table {
-                display: block;
-                overflow-x: auto;
-            }
-            
-            .pill-header {
-                padding: 15px;
-            }
-            
-            .pill-title {
-                font-size: 1.1rem;
-            }
-            
-            footer {
-                padding: 25px 15px 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .site-title h1 {
-                font-size: 1.4rem;
-            }
-            
-            .logo {
-                height: 40px;
-            }
-            
-            nav li {
-                margin: 0 6px 6px;
-            }
-            
-            header {
-                padding: 10px 0;
-            }
-            
-            .hero {
-                padding: 60px 15px;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .pill-header {
-                padding: 12px;
-            }
-            
-            .pill-title {
-                font-size: 1rem;
-            }
-            
-            .footer-logo {
-                height: 35px;
-            }
-        }
-
-        /* Accessibility Toggle */
+        /* Moved accessibility toggle to bottom */
         .accessibility-toggle {
             display: flex;
             justify-content: center;
-            margin: 15px 0 20px; /* Adjusted margins */
+            width: 100%;
+            order: 2; /* Toggle after copyright */
         }
 
         .toggle-btn {
             background: var(--gp-green);
             color: var(--gp-white);
             border: 2px solid var(--gp-white);
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 12px 24px;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 700; /* Increased for better contrast */
+            font-size: 1rem;
+            font-weight: 700;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -649,12 +614,12 @@
             background: var(--gp-white);
             color: var(--gp-green);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
         .toggle-btn:focus {
-            outline: 3px solid var(--gp-yellow);
-            outline-offset: 2px;
+            outline: var(--focus-outline);
+            outline-offset: 4px;
         }
 
         .toggle-btn[aria-pressed="true"] {
@@ -668,63 +633,360 @@
             color: var(--gp-dark);
             border-color: var(--gp-white);
         }
-
-        /* Dyslexia CSS - Only applied when enabled */
-        .dyslexia-mode {
-            font-family: "OpenDyslexic", Arial, sans-serif !important;
-            letter-spacing: 0.05em !important;
-            line-height: 1.8 !important; /* Increased for better readability */
-            word-spacing: 0.1em !important;
-        }
-
-        .dyslexia-mode * {
-            font-family: inherit !important;
-        }
         
-        .no-dyslexia-effect {
-            font-family: 'Montserrat', sans-serif !important;
-            letter-spacing: normal !important;
-            word-spacing: normal !important;
-            font-feature-settings: normal !important;
-            font-variant: normal !important;
-        }
-
-        .dyslexia-mode .no-dyslexia-effect {
-            font-family: 'Montserrat', sans-serif !important;
-            letter-spacing: normal !important;
-            word-spacing: normal !important;
-            font-feature-settings: normal !important;
-            font-variant: normal !important;
-        }
-
-        /* Skip to main content link for keyboard users */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             background: var(--gp-green);
             color: white;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 1001;
-            transition: top 0.3s;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
         }
-
-        .skip-link:focus {
-            top: 10px;
-            outline: 3px solid var(--gp-yellow);
-        }
-
-        /* Focus styles for better accessibility */
-        :focus-visible {
-            outline: 3px solid var(--gp-yellow);
+        
+        .back-to-top:focus {
+            outline: var(--focus-outline);
             outline-offset: 2px;
         }
+        
+        .back-to-top:hover {
+            background: var(--gp-light-green);
+            transform: translateY(-3px);
+        }
+        
+        .back-to-top.visible {
+            display: flex;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+            
+            .header-content {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                height: 60px;
+            }
+            
+            .logo-container {
+                margin-bottom: 10px;
+            }
+            
+            .site-title {
+                margin-bottom: 15px;
+            }
+            
+            .site-title h1 {
+                margin-bottom: 3px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav li {
+                margin: 0 10px 10px;
+            }
+            
+            nav a {
+                font-size: 1rem;
+            }
+            
+            .theme-toggle {
+                position: static;
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 60px 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .privacy-content {
+                padding: 25px;
+            }
+            
+            .data-table {
+                display: block;
+                overflow-x: auto;
+                font-size: 0.95rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 12px 15px;
+            }
+            
+            .pill-header {
+                padding: 20px;
+            }
+            
+            .pill-title {
+                font-size: 1.1rem;
+            }
+            
+            .pill-icon {
+                font-size: 1.5rem;
+            }
+            
+            /* Footer responsive */
+            footer {
+                padding: 35px 15px 25px;
+            }
+            
+            .footer-logo {
+                height: 65px;
+            }
+            
+            .copyright {
+                font-size: 1rem;
+            }
+            
+            .toggle-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
 
-        /* Improve contrast for pill content */
-        .pill-content p,
-        .pill-content li {
-            color: var(--text-color);
+        @media (max-width: 480px) {
+            .site-title h1 {
+                font-size: 1.6rem;
+            }
+            
+            .logo {
+                height: 50px;
+            }
+            
+            nav li {
+                margin: 0 8px 8px;
+            }
+            
+            header {
+                padding: 12px 0;
+            }
+            
+            .hero {
+                padding: 50px 12px;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .pill-header {
+                padding: 18px;
+            }
+            
+            .pill-title {
+                font-size: 1.1rem;
+            }
+            
+            /* Footer small screen adjustments */
+            .footer-logo {
+                height: 55px;
+            }
+            
+            .copyright {
+                font-size: 0.95rem;
+            }
+            
+            .toggle-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Dyslexia CSS */
+        .dyslexia-mode {
+            font-family: 'OpenDyslexic', 'Lexie Readable', 'Tiresias', 'EasyReading', 'Sylexiad', sans-serif !important;
+            letter-spacing: 0.07em !important;
+            line-height: 1.8 !important;
+            word-spacing: 0.15em !important;
+            font-size: 19px !important;
+        }
+
+        /* Apply dyslexia font stack to all text elements */
+        .dyslexia-mode,
+        .dyslexia-mode p,
+        .dyslexia-mode span,
+        .dyslexia-mode div:not(.no-dyslexia-effect):not(.pill-icon):not(.toggle-switch):not(.logo-text):not(.logo-subtext),
+        .dyslexia-mode li,
+        .dyslexia-mode td,
+        .dyslexia-mode th,
+        .dyslexia-mode caption,
+        .dyslexia-mode label,
+        .dyslexia-mode input:not([type="checkbox"]):not([type="radio"]),
+        .dyslexia-mode textarea,
+        .dyslexia-mode select,
+        .dyslexia-mode button:not(.toggle-btn) {
+            font-family: 'OpenDyslexic', 'Lexie Readable', 'Tiresias', 'EasyReading', 'Sylexiad', sans-serif !important;
+        }
+
+        /* Apply the same font stack to the toggle button text */
+        .dyslexia-mode .toggle-btn {
+            font-family: 'OpenDyslexic', 'Lexie Readable', 'Tiresias', 'EasyReading', 'Sylexiad', sans-serif !important;
+            letter-spacing: 0.05em !important;
+        }
+
+        /* Preserve special fonts for certain elements */
+        .dyslexia-mode .no-dyslexia-effect,
+        .dyslexia-mode .pill-icon,
+        .dyslexia-mode .toggle-switch,
+        .dyslexia-mode .logo-text,
+        .dyslexia-mode .logo-subtext,
+        .dyslexia-mode h1,
+        .dyslexia-mode h2,
+        .dyslexia-mode h3,
+        .dyslexia-mode h4,
+        .dyslexia-mode h5,
+        .dyslexia-mode h6,
+        .dyslexia-mode .site-title h1,
+        .dyslexia-mode .pill-title,
+        .dyslexia-mode .section-title h2,
+        .dyslexia-mode .hero h2 {
+            font-family: 'Montserrat', sans-serif !important;
+            letter-spacing: normal !important;
+            word-spacing: normal !important;
+        }
+        
+        /* Improve readability for form elements in dyslexia mode */
+        .dyslexia-mode input,
+        .dyslexia-mode textarea,
+        .dyslexia-mode select {
+            font-size: 1.1em !important;
+            padding: 10px !important;
+            line-height: 1.6 !important;
+        }
+        
+        /* Font-face definitions for system-installed dyslexia fonts */
+        @font-face {
+            font-family: 'Lexie Readable';
+            src: local('Lexie Readable'), local('LexieReadable-Regular');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Tiresias';
+            src: local('Tiresias'), local('TiresiasPCfont');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'EasyReading';
+            src: local('EasyReading'), local('EasyReading-Regular');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Sylexiad';
+            src: local('Sylexiad'), local('SylexiadSans');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Focus styles */
+        :focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: 3px;
+        }
+
+        /* Print styles */
+        @media print {
+            .theme-toggle,
+            .accessibility-toggle,
+            .back-to-top,
+            nav {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.5;
+                color: #000;
+                background: #fff;
+            }
+            
+            .privacy-content {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            a {
+                color: #000;
+                text-decoration: underline;
+            }
+            
+            .hero {
+                background: #fff !important;
+                color: #000 !important;
+                padding: 20px 0;
+            }
+            
+            .hero h2 {
+                color: #000 !important;
+            }
         }
     </style>
 
@@ -765,10 +1027,34 @@
             const dyslexiaToggle = document.getElementById('dyslexia-toggle');
             const dyslexiaMode = localStorage.getItem('dyslexiaMode') || 'off';
             
+            // Function to load OpenDyslexic font from Google Fonts API
+            function loadDyslexiaFont() {
+                const fontLink = document.createElement('link');
+                fontLink.rel = 'stylesheet';
+                fontLink.href = 'https://fonts.googleapis.com/css2?family=OpenDyslexic:wght@400;700&display=swap';
+                fontLink.id = 'dyslexia-font';
+                
+                if (!document.getElementById('dyslexia-font')) {
+                    document.head.appendChild(fontLink);
+                }
+            }
+            
+            // Function to remove dyslexia font
+            function removeDyslexiaFont() {
+                const fontLink = document.getElementById('dyslexia-font');
+                if (fontLink) {
+                    fontLink.remove();
+                }
+            }
+            
             if (dyslexiaMode === 'on') {
                 document.body.classList.add('dyslexia-mode');
                 dyslexiaToggle.setAttribute('aria-pressed', 'true');
                 dyslexiaToggle.textContent = 'Dyslexia-Friendly Mode: ON';
+                dyslexiaToggle.setAttribute('aria-label', 'Dyslexia-Friendly Mode is currently ON. Click to turn OFF.');
+                loadDyslexiaFont();
+            } else {
+                dyslexiaToggle.setAttribute('aria-label', 'Dyslexia-Friendly Mode is currently OFF. Click to turn ON.');
             }
             
             dyslexiaToggle.addEventListener('click', function() {
@@ -778,55 +1064,140 @@
                     document.body.classList.remove('dyslexia-mode');
                     this.setAttribute('aria-pressed', 'false');
                     this.textContent = 'Dyslexia-Friendly Mode: OFF';
+                    this.setAttribute('aria-label', 'Dyslexia-Friendly Mode is currently OFF. Click to turn ON.');
                     localStorage.setItem('dyslexiaMode', 'off');
+                    removeDyslexiaFont();
                 } else {
                     document.body.classList.add('dyslexia-mode');
                     this.setAttribute('aria-pressed', 'true');
                     this.textContent = 'Dyslexia-Friendly Mode: ON';
+                    this.setAttribute('aria-label', 'Dyslexia-Friendly Mode is currently ON. Click to turn OFF.');
                     localStorage.setItem('dyslexiaMode', 'on');
+                    loadDyslexiaFont();
                 }
             });
+            
+            // Preload the dyslexia font when page loads if mode is on
+            if (dyslexiaMode === 'on') {
+                setTimeout(loadDyslexiaFont, 100);
+            }
             
             // Collapsible pills functionality
             const pillHeaders = document.querySelectorAll('.pill-header');
             
             pillHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.pill-icon');
+                
+                // Set initial state
+                header.setAttribute('aria-expanded', 'false');
+                header.setAttribute('role', 'button');
+                header.setAttribute('tabindex', '0');
+                header.setAttribute('aria-controls', content.id || generateUniqueId());
+                if (!content.id) content.id = header.getAttribute('aria-controls');
+                
                 header.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const icon = this.querySelector('.pill-icon');
-                    
-                    // Toggle active class
-                    content.classList.toggle('active');
-                    
-                    // Rotate icon
-                    if (content.classList.contains('active')) {
-                        icon.textContent = '−';
-                    } else {
-                        icon.textContent = '+';
-                    }
+                    togglePill(this);
                 });
                 
                 // Add keyboard support for pills
                 header.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        this.click();
+                        togglePill(this);
                     }
                 });
             });
             
-            // Set aria-expanded for pills
-            document.querySelectorAll('.pill-header').forEach(header => {
+            function togglePill(header) {
                 const content = header.nextElementSibling;
-                header.setAttribute('aria-expanded', 'false');
-                header.setAttribute('role', 'button');
-                header.setAttribute('tabindex', '0');
+                const icon = header.querySelector('.pill-icon');
+                const isExpanded = header.getAttribute('aria-expanded') === 'true';
                 
-                header.addEventListener('click', function() {
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    this.setAttribute('aria-expanded', !isExpanded);
-                });
+                // Toggle active class
+                content.classList.toggle('active');
+                
+                // Update ARIA attributes
+                header.setAttribute('aria-expanded', !isExpanded);
+                
+                // Update icon
+                icon.textContent = isExpanded ? '+' : '−';
+                
+                // Announce change to screen readers
+                const announcement = isExpanded ? 'Section collapsed' : 'Section expanded';
+                announceToScreenReader(announcement);
+            }
+            
+            function generateUniqueId() {
+                return 'pill-' + Math.random().toString(36).substr(2, 9);
+            }
+            
+            function announceToScreenReader(message) {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.classList.add('sr-only');
+                announcement.textContent = message;
+                document.body.appendChild(announcement);
+                
+                setTimeout(() => {
+                    document.body.removeChild(announcement);
+                }, 1000);
+            }
+            
+            // Back to top functionality
+            const backToTopBtn = document.createElement('button');
+            backToTopBtn.className = 'back-to-top';
+            backToTopBtn.setAttribute('aria-label', 'Back to top');
+            backToTopBtn.innerHTML = '↑';
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                document.querySelector('.skip-link').focus();
             });
+            document.body.appendChild(backToTopBtn);
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Add ARIA landmarks
+            const mainContent = document.querySelector('main');
+            if (mainContent && !mainContent.id) {
+                mainContent.id = 'main-content';
+            }
+            
+            // Improve focus management for pills
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const expandedPills = document.querySelectorAll('.pill-header[aria-expanded="true"]');
+                    expandedPills.forEach(pill => {
+                        pill.setAttribute('aria-expanded', 'false');
+                        pill.nextElementSibling.classList.remove('active');
+                        pill.querySelector('.pill-icon').textContent = '+';
+                    });
+                }
+            });
+            
+            // Screen reader only class
+            const style = document.createElement('style');
+            style.textContent = `
+                .sr-only {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                    border: 0;
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </head>
@@ -834,11 +1205,11 @@
     <!-- Skip to main content link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
-    <header>
+    <header role="banner">
         <div class="theme-toggle">
             <span class="toggle-label" id="light-label">Light</span>
             <label class="toggle-switch">
-                <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+                <input type="checkbox" id="theme-toggle" aria-label="Toggle between light and dark mode">
                 <span class="toggle-slider"></span>
             </label>
             <span class="toggle-label" id="dark-label">Dark</span>
@@ -847,11 +1218,12 @@
         <div class="header-content">
            <div class="logo-container no-dyslexia-effect">
                 <!-- Embedded Green Party Logo -->
-                <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans Logo">
-                    <!-- Your PNG image -->
-                    <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="GreenMeans leaf icon" />
-                    <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#00A651" class="logo-text">GreenMeans</text>
-                    <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" fill="#2C2A29" class="logo-subtext">Bold Politics</text>
+                <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logo-title logo-desc">
+                    <title id="logo-title">GreenMeans Logo</title>
+                    <desc id="logo-desc">Green leaf icon with the text GreenMeans Bold Politics</desc>
+                    <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="" />
+                    <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#008040" class="logo-text">GreenMeans</text>
+                    <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" fill="#1A1A1A" class="logo-subtext">Bold Politics</text>
                 </svg>
             </div>
             
@@ -860,41 +1232,41 @@
             </div>
             
             <nav aria-label="Main navigation">
-                <ul>
-                    <li><a href="https://greenmeans.ovh">Home</a></li>
-                    <li><a href="#" class="active" aria-current="page">Privacy Policy</a></li>
+                <ul role="menubar">
+                    <li role="none"><a href="https://greenmeans.ovh" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#" class="active" aria-current="page" role="menuitem">Privacy Policy</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
         <div class="hero-content">
-            <h2>Privacy Policy</h2>
+            <h2 id="hero-title">Privacy Policy</h2>
             <p>We are committed to protecting your privacy and ensuring transparency about how we handle your data.</p>
         </div>
     </section>
 
-    <main id="main-content">
-        <section class="privacy-section">
+    <main id="main-content" role="main">
+        <section class="privacy-section" aria-labelledby="privacy-commitment">
             <div class="section-title">
-                <h2>Our Commitment to Your Privacy</h2>
+                <h2 id="privacy-commitment">Our Commitment to Your Privacy</h2>
             </div>
             
             <div class="privacy-content">
-                <p class="last-updated">Last updated: December 15, 2025</p>
+                <p class="last-updated"><strong>Last updated:</strong> December 15, 2025</p>
                 
                 <div class="privacy-pills">
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">1. Data Controller</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>The data controller for this website is:</p>
                             <ul>
                                 <li><strong>Entity:</strong> GreenMeans, a sole proprietor</li>
-                                <li><strong>Contact Email:</strong> admin@greenmeans.ovh</li>
+                                <li><strong>Contact Email:</strong> <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></li>
                             </ul>
                         </div>
                     </div>
@@ -902,11 +1274,12 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">2. Information We Collect</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>We collect minimal data to operate our website effectively:</p>
                             <table class="data-table">
+                                <caption>Data Collection Overview</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col">Data Type</th>
@@ -953,11 +1326,12 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">3. Purpose & Lawful Basis for Processing</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>We process data for the following purposes:</p>
                             <table class="data-table">
+                                <caption>Data Processing Purposes</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col">Purpose</th>
@@ -984,7 +1358,7 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">4. Third-Party Services</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>We use the following third-party services:</p>
@@ -1003,11 +1377,12 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">5. Data Retention</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>We retain data only as long as necessary:</p>
                             <table class="data-table">
+                                <caption>Data Retention Periods</caption>
                                 <thead>
                                     <tr>
                                         <th scope="col">Data Type</th>
@@ -1039,7 +1414,7 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">6. International Data Transfers</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>Yes, data is transferred to the USA via:</p>
@@ -1053,20 +1428,20 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">7. Your Rights</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>Under data protection law, you have rights including:</p>
-                            <ul>
-                                <li>Your right of access - You have the right to ask us for copies of your personal information.</li>
-                                <li>Your right to rectification - You have the right to ask us to rectify personal information you think is inaccurate.</li>
-                                <li>Your right to erasure - You have the right to ask us to erase your personal information in certain circumstances.</li>
-                                <li>Your right to restriction of processing - You have the right to ask us to restrict the processing of your personal information in certain circumstances.</li>
-                                <li>Your right to object to processing - You have the right to object to the processing of your personal information in certain circumstances.</li>
-                                <li>Your right to data portability - You have the right to ask that we transfer the personal information you gave us to another organisation, or to you, in certain circumstances.</li>
-                            </ul>
+                            <ol>
+                                <li><strong>Right of access</strong> - You have the right to ask us for copies of your personal information.</li>
+                                <li><strong>Right to rectification</strong> - You have the right to ask us to rectify personal information you think is inaccurate.</li>
+                                <li><strong>Right to erasure</strong> - You have the right to ask us to erase your personal information in certain circumstances.</li>
+                                <li><strong>Right to restriction of processing</strong> - You have the right to ask us to restrict the processing of your personal information in certain circumstances.</li>
+                                <li><strong>Right to object to processing</strong> - You have the right to object to the processing of your personal information in certain circumstances.</li>
+                                <li><strong>Right to data portability</strong> - You have the right to ask that we transfer the personal information you gave us to another organisation, or to you, in certain circumstances.</li>
+                            </ol>
                             <p>You are not required to pay any charge for exercising your rights. If you make a request, we have one month to respond to you.</p>
-                            <p>To exercise any of these rights, please contact us at: <strong>admin@greenmeans.ovh</strong></p>
+                            <p>To exercise any of these rights, please contact us at: <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></p>
                             <p><strong>Note regarding Google AdSense:</strong> For advertising-related data collected by Google, you can manage your preferences directly through Google's tools at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Center</a> or opt out of personalized advertising at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
                         </div>
                     </div>
@@ -1074,7 +1449,7 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">8. Cookies</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>Our website uses:</p>
@@ -1091,7 +1466,7 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">9. Changes to This Privacy Policy</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
@@ -1101,7 +1476,7 @@
                     <div class="privacy-pill">
                         <div class="pill-header">
                             <h3 class="pill-title">10. Contact Us</h3>
-                            <span class="pill-icon">+</span>
+                            <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
                             <p>If you have any questions about this Privacy Policy, please contact us:</p>
@@ -1115,23 +1490,27 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-container">
+            <div class="footer-logo-section">
+                <div class="footer-logo-container">
+                    <!-- GreenMeans Logo - Centered and Larger -->
+                    <svg class="footer-logo" viewBox="0 0 250 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="footer-logo-title">
+                        <title id="footer-logo-title">GreenMeans</title>
+                        <image href="https://greenmeans.ovh/favicon.png" x="0" y="15" width="45" height="35" alt="" />
+                        <text x="55" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="22" fill="white">GreenMeans</text>
+                    </svg>
+                </div>
+                
+                <p class="copyright">© 2025 GreenMeans. All rights reserved.</p>
+            </div>
+            
+            <!-- Moved Dyslexia toggle to below copyright -->
             <div class="accessibility-toggle">
                 <button class="toggle-btn" id="dyslexia-toggle" aria-pressed="false">
                     Dyslexia-Friendly Mode: OFF
                 </button>
             </div>
-            
-            <div class="footer-logo-container">
-                <!-- GreenMeans Logo -->
-                <svg class="footer-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans Logo">
-                    <image href="https://greenmeans.ovh/favicon.png" x="5" y="10" width="30" height="20" alt="GreenMeans leaf icon" />
-                    <text x="45" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="white">GreenMeans</text>
-                </svg>
-            </div>
-            
-            <p class="copyright">© 2025 GreenMeans. All rights reserved.</p>
         </div>
     </footer>
 </body>
