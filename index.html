@@ -8,14 +8,13 @@
     <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Official Green Party Brand Colours - Updated for better contrast */
+        /* Official Green Party Brand Colours */
         :root {
-            --gp-green: #006B35; /* Much darker Primary Green for 4.5:1+ contrast (was #008F46) */
-            --gp-light-green: #5D8F2A; /* Much darker Secondary Green for better contrast (was #7EB63A) */
-            --gp-yellow: #B3A300; /* Much darker Yellow for better contrast (was #E6D600) */
-            --gp-dark: #1A1A1A; /* Darker Grey/Black for better contrast */
-            --gp-medium-dark: #2A2A2A; /* Medium dark for contrast */
-            --gp-light: #F5F5F5; /* Lighter Grey for better contrast */
+            --gp-green: #00A651; /* Primary Green */
+            --gp-light-green: #8DC63F; /* Secondary Green */
+            --gp-yellow: #FFF200; /* Accent Yellow */
+            --gp-dark: #2C2A29; /* Dark Grey/Black */
+            --gp-light: #F1F1F1; /* Light Grey */
             --gp-white: #FFFFFF; /* White */
             
             /* Light mode variables (default) */
@@ -23,36 +22,32 @@
             --text-color: var(--gp-dark);
             --header-bg: var(--gp-white);
             --card-bg: var(--gp-white);
-            --footer-bg: #0A0A0A; /* Darker footer for better contrast */
-            --footer-text: #F0F0F0; /* Lighter footer text for better contrast */
+            --footer-bg: var(--gp-dark);
+            --footer-text: var(--gp-white);
             --pill-bg: var(--gp-white);
-            --pill-hover: #f0f0f0;
+            --pill-hover: #f8f8f8;
             --subpill-bg: var(--gp-light);
-            --rationale-bg: rgba(93, 143, 42, 0.1); /* Updated with new green */
+            --rationale-bg: rgba(141, 198, 63, 0.1);
             --shadow-color: rgba(0, 0, 0, 0.08);
             --shadow-hover: rgba(0, 0, 0, 0.12);
-            --link-color: #0055AA; /* Darker blue for better contrast (was #0066CC) */
-            --link-hover: #003366; /* Even darker blue for hover */
-            --heading-green: #006B35; /* Dark green for headings to ensure 4.5:1 contrast */
+            --link-color: #0066cc;
         }
         
-        /* Dark mode variables - Updated for better contrast */
+        /* Dark mode variables */
         [data-theme="dark"] {
-            --bg-color: #080808; /* Darker background */
-            --text-color: #F5F5F5; /* Lighter text for better contrast */
-            --header-bg: #121212; /* Darker header */
-            --card-bg: #151515; /* Darker cards */
-            --footer-bg: #040404; /* Darker footer */
-            --footer-text: #E8E8E8; /* Lighter footer text */
-            --pill-bg: #1E1E1E; /* Darker pills */
-            --pill-hover: #2A2A2A;
-            --subpill-bg: #222222;
-            --rationale-bg: rgba(93, 143, 42, 0.2);
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --shadow-hover: rgba(0, 0, 0, 0.7);
-            --link-color: #66B3FF; /* Lighter blue for dark mode with better contrast */
-            --link-hover: #99CCFF; /* Even lighter for hover */
-            --heading-green: #5D8F2A; /* Lighter green for dark mode headings */
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --header-bg: #1e1e1e;
+            --card-bg: #1e1e1e;
+            --footer-bg: #0a0a0a;
+            --footer-text: #e0e0e0;
+            --pill-bg: #2a2a2a;
+            --pill-hover: #333333;
+            --subpill-bg: #2a2a2a;
+            --rationale-bg: rgba(141, 198, 63, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
+            --link-color: #66b3ff;
         }
         
         * {
@@ -112,28 +107,27 @@
         
         .site-title h1 {
             font-size: 3rem;
-            color: var(--heading-green); /* Using darker green for better contrast */
+            color: var(--gp-green);
             font-weight: 800;
             margin-bottom: 5px;
             text-align: center;
         }
         
         .bold-politics {
-            color: var(--gp-medium-dark); /* Better contrast */
+            color: var(--gp-dark);
             transition: color 0.3s;
         }
         
         [data-theme="dark"] .bold-politics {
-            color: #F0F0F0; /* Better contrast in dark mode */
+            color: #FFFFFF;
         }
         
         .logo-subtext {
             transition: fill 0.3s;
-            fill: var(--gp-medium-dark); /* Better contrast */
         }
         
         [data-theme="dark"] .logo-subtext {
-            fill: #F0F0F0; /* Better contrast in dark mode */
+            fill: #FFFFFF;
         }
         
         nav ul {
@@ -158,11 +152,11 @@
         }
         
         nav a:hover {
-            color: var(--heading-green); /* Using darker green */
+            color: var(--gp-green);
         }
         
         nav a.active {
-            color: var(--heading-green); /* Using darker green */
+            color: var(--gp-green);
         }
         
         nav a.active::after {
@@ -228,7 +222,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #666; /* Darker grey for better contrast */
+            background-color: #ccc;
             transition: .4s;
             border-radius: 34px;
         }
@@ -246,7 +240,7 @@
         }
         
         input:checked + .toggle-slider {
-            background-color: var(--heading-green); /* Using darker green */
+            background-color: var(--gp-green);
         }
         
         input:checked + .toggle-slider:before {
@@ -278,7 +272,6 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            color: rgba(255, 255, 255, 0.95); /* Better contrast */
         }
         
         /* Main Content */
@@ -298,7 +291,6 @@
             font-size: 2.2rem;
             display: inline-block;
             padding-bottom: 10px;
-            color: var(--text-color);
         }
         
         .section-title h2::after {
@@ -322,7 +314,7 @@
         }
         
         .privacy-content h3 {
-            color: var(--heading-green); /* Using darker green for better contrast */
+            color: var(--gp-green);
             margin: 30px 0 15px;
             font-size: 1.5rem;
         }
@@ -333,7 +325,6 @@
         
         .privacy-content p {
             margin-bottom: 15px;
-            color: var(--text-color);
         }
         
         .privacy-content ul {
@@ -343,30 +334,48 @@
         
         .privacy-content li {
             margin-bottom: 10px;
+        }
+        
+        /* Fix for contrast issues in lists */
+        .privacy-content strong {
             color: var(--text-color);
+            font-weight: 700;
         }
         
         .last-updated {
             font-style: italic;
-            color: var(--heading-green); /* Using darker green */
+            color: var(--gp-green);
             margin-bottom: 30px;
             text-align: center;
+            font-weight: 600;
+        }
+        
+        /* Link styling for better contrast */
+        a:not(.toggle-btn):not(nav a) {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 2px;
+            transition: color 0.3s, opacity 0.3s;
+        }
+        
+        a:not(.toggle-btn):not(nav a):hover,
+        a:not(.toggle-btn):not(nav a):focus {
+            color: var(--gp-green);
+            opacity: 0.9;
+            outline: 2px solid var(--gp-yellow);
+            outline-offset: 2px;
+        }
+        
+        a:not(.toggle-btn):not(nav a):focus-visible {
+            outline: 2px solid var(--gp-yellow);
+            outline-offset: 2px;
         }
         
         .data-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-        }
-        
-        .data-table caption {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--heading-green); /* Using darker green */
-            text-align: left;
-            padding: 10px 0;
-            margin-bottom: 10px;
-            caption-side: top;
         }
         
         .data-table th, .data-table td {
@@ -376,28 +385,18 @@
         }
         
         .data-table th {
-            background-color: var(--heading-green); /* Using darker green */
+            background-color: var(--gp-green);
             color: white;
+            font-weight: 700;
         }
         
         .data-table tr:nth-child(even) {
             background-color: var(--rationale-bg);
         }
         
+        /* Improve table text contrast */
         .data-table td {
             color: var(--text-color);
-        }
-        
-        /* Links */
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        a:hover {
-            color: var(--link-hover);
-            text-decoration: underline;
         }
         
         /* Collapsible Pills */
@@ -414,14 +413,6 @@
             box-shadow: 0 2px 6px var(--shadow-color);
             overflow: hidden;
             transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-        }
-        
-        .privacy-pill.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .privacy-pill:hover {
@@ -444,7 +435,7 @@
         
         .pill-title {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
+            font-weight: 700; /* Increased for better contrast */
             font-size: 1.2rem;
             color: var(--text-color);
             margin: 0;
@@ -452,8 +443,9 @@
         
         .pill-icon {
             font-size: 1.5rem;
-            color: var(--heading-green); /* Using darker green */
+            color: var(--gp-green);
             transition: transform 0.3s;
+            font-weight: 700; /* Improved contrast */
         }
         
         .pill-content {
@@ -486,10 +478,11 @@
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
-            padding: 40px 20px;
+            padding: 30px 20px 20px; /* Reduced padding */
+            margin-top: 40px;
         }
         
-        .footer-container-wrapper {
+        .footer-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
@@ -502,66 +495,14 @@
         }
         
         .footer-logo {
-            height: 50px;
-        }
-        
-        .footer-logo text {
-            fill: var(--footer-text);
+            height: 40px; /* Reduced height */
         }
         
         .copyright {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9); /* Better contrast */
-        }
-        
-        /* Accessibility Toggle */
-        .accessibility-toggle {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .toggle-btn {
-            background: var(--heading-green); /* Using darker green */
-            color: white;
-            border: 2px solid white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .toggle-btn:hover {
-            background: white;
-            color: var(--heading-green); /* Using darker green */
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .toggle-btn[aria-pressed="true"] {
-            background: var(--gp-yellow);
-            color: var(--gp-dark);
-            border-color: var(--gp-yellow);
-        }
-
-        .toggle-btn[aria-pressed="true"]:hover {
-            background: white;
-            color: var(--gp-dark);
-            border-color: white;
-        }
-        
-        /* Strong text for better contrast */
-        strong {
-            color: var(--text-color);
-            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9); /* Improved contrast */
         }
         
         /* Responsive Design */
@@ -633,6 +574,10 @@
             .pill-title {
                 font-size: 1.1rem;
             }
+            
+            footer {
+                padding: 25px 15px 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -671,13 +616,64 @@
             .pill-title {
                 font-size: 1rem;
             }
+            
+            .footer-logo {
+                height: 35px;
+            }
+        }
+
+        /* Accessibility Toggle */
+        .accessibility-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0 20px; /* Adjusted margins */
+        }
+
+        .toggle-btn {
+            background: var(--gp-green);
+            color: var(--gp-white);
+            border: 2px solid var(--gp-white);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700; /* Increased for better contrast */
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .toggle-btn:hover {
+            background: var(--gp-white);
+            color: var(--gp-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .toggle-btn:focus {
+            outline: 3px solid var(--gp-yellow);
+            outline-offset: 2px;
+        }
+
+        .toggle-btn[aria-pressed="true"] {
+            background: var(--gp-yellow);
+            color: var(--gp-dark);
+            border-color: var(--gp-yellow);
+        }
+
+        .toggle-btn[aria-pressed="true"]:hover {
+            background: var(--gp-white);
+            color: var(--gp-dark);
+            border-color: var(--gp-white);
         }
 
         /* Dyslexia CSS - Only applied when enabled */
         .dyslexia-mode {
             font-family: "OpenDyslexic", Arial, sans-serif !important;
             letter-spacing: 0.05em !important;
-            line-height: 1.6 !important;
+            line-height: 1.8 !important; /* Increased for better readability */
             word-spacing: 0.1em !important;
         }
 
@@ -701,340 +697,172 @@
             font-variant: normal !important;
         }
 
-        /* Lazy loading styles - Fixed */
-        .lazy-load {
-            opacity: 1 !important; /* Force visible by default */
-            transform: translateY(0) !important; /* Force visible by default */
-            transition: opacity 0.3s ease, transform 0.3s ease !important;
-        }
-
-        .lazy-load.enhanced {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .lazy-load.enhanced.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Accessibility improvements */
-        .sr-only {
+        /* Skip to main content link for keyboard users */
+        .skip-link {
             position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+            top: -40px;
+            left: 0;
+            background: var(--gp-green);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1001;
+            transition: top 0.3s;
         }
 
-        .toggle-switch-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .skip-link:focus {
+            top: 10px;
+            outline: 3px solid var(--gp-yellow);
         }
-        
-        /* Ensure table text has good contrast in dark mode */
-        [data-theme="dark"] .data-table td {
-            color: #F0F0F0;
+
+        /* Focus styles for better accessibility */
+        :focus-visible {
+            outline: 3px solid var(--gp-yellow);
+            outline-offset: 2px;
         }
-        
-        [data-theme="dark"] .data-table th {
-            background-color: var(--heading-green);
-            color: white;
-        }
-        
-        [data-theme="dark"] .data-table caption {
-            color: var(--heading-green);
-        }
-        
-        /* Contextual link styling */
-        .contextual-link {
-            font-weight: 600;
+
+        /* Improve contrast for pill content */
+        .pill-content p,
+        .pill-content li {
             color: var(--text-color);
-        }
-        
-        /* Logo colours for better contrast */
-        .logo-text {
-            fill: var(--heading-green) !important;
-        }
-        
-        .logo-subtext {
-            fill: var(--gp-medium-dark) !important;
-        }
-        
-        [data-theme="dark"] .logo-subtext {
-            fill: #E0E0E0 !important;
         }
     </style>
 
     <script>
-        // Modern JS optimisations for V8 - Fixed lazy loading
-        (function() {
-            'use strict';
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const lightLabel = document.getElementById('light-label');
+            const darkLabel = document.getElementById('dark-label');
             
-            // Theme toggle functionality
-            function initThemeToggle() {
-                const themeToggle = document.getElementById('theme-toggle');
-                const lightLabel = document.getElementById('light-label');
-                const darkLabel = document.getElementById('dark-label');
-                
-                // Check for saved theme preference or default to light
-                const currentTheme = localStorage.getItem('theme') || 'light';
-                
-                // Apply the saved theme
-                document.documentElement.setAttribute('data-theme', currentTheme);
-                themeToggle.checked = currentTheme === 'dark';
-                updateToggleLabels(currentTheme);
-                
-                // Toggle theme when switch is clicked
-                themeToggle.addEventListener('change', function() {
-                    const newTheme = this.checked ? 'dark' : 'light';
-                    document.documentElement.setAttribute('data-theme', newTheme);
-                    localStorage.setItem('theme', newTheme);
-                    updateToggleLabels(newTheme);
-                });
-                
-                function updateToggleLabels(theme) {
-                    if (theme === 'dark') {
-                        lightLabel.style.opacity = '0.5';
-                        darkLabel.style.opacity = '1';
-                    } else {
-                        lightLabel.style.opacity = '1';
-                        darkLabel.style.opacity = '0.5';
-                    }
+            // Check for saved theme preference or default to light
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            
+            // Apply the saved theme
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeToggle.checked = currentTheme === 'dark';
+            updateToggleLabels(currentTheme);
+            
+            // Toggle theme when switch is clicked
+            themeToggle.addEventListener('change', function() {
+                const newTheme = this.checked ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateToggleLabels(newTheme);
+            });
+            
+            function updateToggleLabels(theme) {
+                if (theme === 'dark') {
+                    lightLabel.style.opacity = '0.5';
+                    darkLabel.style.opacity = '1';
+                } else {
+                    lightLabel.style.opacity = '1';
+                    darkLabel.style.opacity = '0.5';
                 }
             }
             
             // Dyslexia toggle functionality
-            function initDyslexiaToggle() {
-                const dyslexiaToggle = document.getElementById('dyslexia-toggle');
-                const dyslexiaMode = localStorage.getItem('dyslexiaMode') || 'off';
-                
-                if (dyslexiaMode === 'on') {
-                    document.body.classList.add('dyslexia-mode');
-                    dyslexiaToggle.setAttribute('aria-pressed', 'true');
-                    dyslexiaToggle.textContent = 'Dyslexia-Friendly Mode: ON';
-                }
-                
-                dyslexiaToggle.addEventListener('click', function() {
-                    const isPressed = this.getAttribute('aria-pressed') === 'true';
-                    
-                    if (isPressed) {
-                        document.body.classList.remove('dyslexia-mode');
-                        this.setAttribute('aria-pressed', 'false');
-                        this.textContent = 'Dyslexia-Friendly Mode: OFF';
-                        localStorage.setItem('dyslexiaMode', 'off');
-                    } else {
-                        document.body.classList.add('dyslexia-mode');
-                        this.setAttribute('aria-pressed', 'true');
-                        this.textContent = 'Dyslexia-Friendly Mode: ON';
-                        localStorage.setItem('dyslexiaMode', 'on');
-                    }
-                });
+            const dyslexiaToggle = document.getElementById('dyslexia-toggle');
+            const dyslexiaMode = localStorage.getItem('dyslexiaMode') || 'off';
+            
+            if (dyslexiaMode === 'on') {
+                document.body.classList.add('dyslexia-mode');
+                dyslexiaToggle.setAttribute('aria-pressed', 'true');
+                dyslexiaToggle.textContent = 'Dyslexia-Friendly Mode: ON';
             }
+            
+            dyslexiaToggle.addEventListener('click', function() {
+                const isPressed = this.getAttribute('aria-pressed') === 'true';
+                
+                if (isPressed) {
+                    document.body.classList.remove('dyslexia-mode');
+                    this.setAttribute('aria-pressed', 'false');
+                    this.textContent = 'Dyslexia-Friendly Mode: OFF';
+                    localStorage.setItem('dyslexiaMode', 'off');
+                } else {
+                    document.body.classList.add('dyslexia-mode');
+                    this.setAttribute('aria-pressed', 'true');
+                    this.textContent = 'Dyslexia-Friendly Mode: ON';
+                    localStorage.setItem('dyslexiaMode', 'on');
+                }
+            });
             
             // Collapsible pills functionality
-            function initCollapsiblePills() {
-                const pillHeaders = document.querySelectorAll('.pill-header');
-                
-                pillHeaders.forEach(header => {
-                    header.addEventListener('click', function() {
-                        const content = this.nextElementSibling;
-                        const icon = this.querySelector('.pill-icon');
-                        const pillTitle = this.querySelector('.pill-title').textContent;
-                        
-                        // Toggle active class
-                        const isExpanding = !content.classList.contains('active');
-                        content.classList.toggle('active');
-                        
-                        // Update aria-expanded attribute for accessibility
-                        this.setAttribute('aria-expanded', content.classList.contains('active'));
-                        
-                        // Rotate icon
-                        if (content.classList.contains('active')) {
-                            icon.textContent = '−';
-                            icon.setAttribute('aria-label', 'Collapse ' + pillTitle);
-                        } else {
-                            icon.textContent = '+';
-                            icon.setAttribute('aria-label', 'Expand ' + pillTitle);
-                        }
-                    });
-                    
-                    // Add keyboard support for accessibility
-                    header.addEventListener('keydown', function(e) {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            this.click();
-                        }
-                    });
-                });
-            }
+            const pillHeaders = document.querySelectorAll('.pill-header');
             
-            // Optimised lazy loading with staggered loading
-            function initLazyLoading() {
-                const lazyElements = document.querySelectorAll('.privacy-pill');
-                
-                // First, make all elements visible immediately
-                lazyElements.forEach(element => {
-                    element.classList.remove('lazy-load');
-                    element.classList.add('lazy-load');
-                });
-                
-                // Then enhance with staggered animations if supported
-                if ('IntersectionObserver' in window && window.innerWidth > 768) {
-                    // Only use lazy loading on larger screens
-                    lazyElements.forEach(element => {
-                        element.classList.add('enhanced');
-                    });
+            pillHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.pill-icon');
                     
-                    const lazyObserver = new IntersectionObserver((entries, observer) => {
-                        entries.forEach((entry, index) => {
-                            if (entry.isIntersecting) {
-                                // Stagger the animations
-                                setTimeout(() => {
-                                    entry.target.classList.add('visible');
-                                    observer.unobserve(entry.target);
-                                }, index * 100); // 100ms delay between each
-                            }
-                        });
-                    }, {
-                        rootMargin: '50px 0px',
-                        threshold: 0.1
-                    });
+                    // Toggle active class
+                    content.classList.toggle('active');
                     
-                    lazyElements.forEach(element => {
-                        lazyObserver.observe(element);
-                    });
-                } else {
-                    // On mobile or unsupported browsers, show everything immediately
-                    lazyElements.forEach(element => {
-                        element.classList.add('visible');
-                        element.classList.remove('enhanced');
-                    });
-                }
-            }
-            
-            // Performance optimisation - debounce function
-            function debounce(func, wait) {
-                let timeout;
-                return function executedFunction(...args) {
-                    const later = () => {
-                        clearTimeout(timeout);
-                        func(...args);
-                    };
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                };
-            }
-            
-            // Optimise scroll performance
-            function optimiseScrollPerformance() {
-                let ticking = false;
-                
-                window.addEventListener('scroll', function() {
-                    if (!ticking) {
-                        window.requestAnimationFrame(function() {
-                            // Perform any scroll-related operations here
-                            ticking = false;
-                        });
-                        ticking = true;
+                    // Rotate icon
+                    if (content.classList.contains('active')) {
+                        icon.textContent = '−';
+                    } else {
+                        icon.textContent = '+';
                     }
-                }, { passive: true });
-            }
-            
-            // Initialise everything when DOM is ready
-            function init() {
-                initThemeToggle();
-                initDyslexiaToggle();
-                initCollapsiblePills();
-                optimiseScrollPerformance();
+                });
                 
-                // Initialise lazy loading after a short delay
-                setTimeout(initLazyLoading, 100);
-            }
+                // Add keyboard support for pills
+                header.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
             
-            // Use DOMContentLoaded for better performance
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', init);
-            } else {
-                init();
-            }
-            
-            // Modern JS patterns for better V8 optimisation
-            const performanceUtils = {
-                // Memoisation for expensive operations
-                memoise: function(fn) {
-                    const cache = new Map();
-                    return function(...args) {
-                        const key = JSON.stringify(args);
-                        if (cache.has(key)) {
-                            return cache.get(key);
-                        }
-                        const result = fn.apply(this, args);
-                        cache.set(key, result);
-                        return result;
-                    };
-                },
+            // Set aria-expanded for pills
+            document.querySelectorAll('.pill-header').forEach(header => {
+                const content = header.nextElementSibling;
+                header.setAttribute('aria-expanded', 'false');
+                header.setAttribute('role', 'button');
+                header.setAttribute('tabindex', '0');
                 
-                // Throttle for performance-intensive operations
-                throttle: function(func, limit) {
-                    let inThrottle;
-                    return function() {
-                        const args = arguments;
-                        const context = this;
-                        if (!inThrottle) {
-                            func.apply(context, args);
-                            inThrottle = true;
-                            setTimeout(() => inThrottle = false, limit);
-                        }
-                    };
-                }
-            };
-            
-            // Export for debugging if needed
-            window.performanceUtils = performanceUtils;
-            
-        })();
+                header.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                });
+            });
+        });
     </script>
 </head>
 <body>    
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <header>
         <div class="theme-toggle">
             <span class="toggle-label" id="light-label">Light</span>
-            <label class="toggle-switch-label" for="theme-toggle">
-                <span class="sr-only">Toggle theme between light and dark mode</span>
-                <div class="toggle-switch">
-                    <input type="checkbox" id="theme-toggle" aria-label="Switch between light and dark theme">
-                    <span class="toggle-slider"></span>
-                </div>
+            <label class="toggle-switch">
+                <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+                <span class="toggle-slider"></span>
             </label>
             <span class="toggle-label" id="dark-label">Dark</span>
         </div>
         
         <div class="header-content">
            <div class="logo-container no-dyslexia-effect">
-    <!-- Embedded Green Party Logo - Fixed ARIA references -->
-    <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans logo featuring a green leaf icon with the text GreenMeans Bold Politics">
-        <!-- Your PNG image -->
-        <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="Green leaf icon representing the GreenMeans political organisation" />
-        <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" class="logo-text">GreenMeans</text>
-        <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" class="logo-subtext">Bold Politics</text>
-    </svg>
-</div>
+                <!-- Embedded Green Party Logo -->
+                <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans Logo">
+                    <!-- Your PNG image -->
+                    <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="GreenMeans leaf icon" />
+                    <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#00A651" class="logo-text">GreenMeans</text>
+                    <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" fill="#2C2A29" class="logo-subtext">Bold Politics</text>
+                </svg>
+            </div>
             
             <div class="site-title">
                 <h1>Privacy Policy</h1>
             </div>
             
-            <nav>
+            <nav aria-label="Main navigation">
                 <ul>
                     <li><a href="https://greenmeans.ovh">Home</a></li>
-                    <li><a href="#" class="active">Privacy Policy</a></li>
+                    <li><a href="#" class="active" aria-current="page">Privacy Policy</a></li>
                 </ul>
             </nav>
         </div>
@@ -1047,22 +875,22 @@
         </div>
     </section>
 
-    <main>
+    <main id="main-content">
         <section class="privacy-section">
             <div class="section-title">
                 <h2>Our Commitment to Your Privacy</h2>
             </div>
             
             <div class="privacy-content">
-                <p class="last-updated">Last updated: 15 December 2025</p>
+                <p class="last-updated">Last updated: December 15, 2025</p>
                 
                 <div class="privacy-pills">
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="data-controller-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">1. Data Controller</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="data-controller-content">
+                        <div class="pill-content">
                             <p>The data controller for this website is:</p>
                             <ul>
                                 <li><strong>Entity:</strong> GreenMeans, a sole proprietor</li>
@@ -1072,19 +900,18 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="information-collected-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">2. Information We Collect</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="information-collected-content">
+                        <div class="pill-content">
                             <p>We collect minimal data to operate our website effectively:</p>
                             <table class="data-table">
-                                <caption>Types of Data We Collect</caption>
                                 <thead>
                                     <tr>
-                                        <th>Data Type</th>
-                                        <th>Collection Status</th>
-                                        <th>Details</th>
+                                        <th scope="col">Data Type</th>
+                                        <th scope="col">Collection Status</th>
+                                        <th scope="col">Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1116,22 +943,7 @@
                                     <tr>
                                         <td>Advertising Data</td>
                                         <td>Limited via AdSense</td>
-                                        <td>Google AdSense may collect data to serve personalised ads, as detailed in Section 4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Location Data (Weather)</td>
-                                        <td>With User Permission</td>
-                                        <td>For weather functionality, we collect approximate location (city-level) only when you explicitly grant permission. This is processed locally and sent to Open-Meteo API.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Browser Information (Weather)</td>
-                                        <td>Automatic</td>
-                                        <td>We detect browser language settings to provide weather information in your preferred language (via Accept-Language header).</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Speed Test Data</td>
-                                        <td>With User Initiation</td>
-                                        <td>When you use the Ookla Speedtest, we collect IP address, connection type, download/upload speeds, latency, and jitter. This data is processed by Ookla and shared with us in anonymised, aggregated form for network performance analysis.</td>
+                                        <td>Google AdSense may collect data to serve personalized ads, as detailed in Section 4</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1139,19 +951,18 @@
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="purpose-basis-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">3. Purpose & Lawful Basis for Processing</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="purpose-basis-content">
+                        <div class="pill-content">
                             <p>We process data for the following purposes:</p>
                             <table class="data-table">
-                                <caption>Data Processing Purposes and Legal Bases</caption>
                                 <thead>
                                     <tr>
-                                        <th>Purpose</th>
-                                        <th>Lawful Basis</th>
-                                        <th>Details</th>
+                                        <th scope="col">Purpose</th>
+                                        <th scope="col">Lawful Basis</th>
+                                        <th scope="col">Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1165,57 +976,42 @@
                                         <td>Legitimate Interest/Consent</td>
                                         <td>To display relevant advertisements via Google AdSense to support website operations</td>
                                     </tr>
-                                    <tr>
-                                        <td>Weather Service</td>
-                                        <td>Consent</td>
-                                        <td>To provide local weather information using Open-Meteo API based on user location permission</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Network Performance</td>
-                                        <td>Legitimate Interest</td>
-                                        <td>To analyse network performance and optimise website delivery using Ookla Speedtest</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="third-party-services-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">4. Third-Party Services</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="third-party-services-content">
+                        <div class="pill-content">
                             <p>We use the following third-party services:</p>
                             <ul>
                                 <li><strong>Domain Registrar:</strong> OVH</li>
                                 <li><strong>Web Host:</strong> GitHub</li>
                                 <li><strong>Analytics:</strong> Cloudflare/GitHub</li>
                                 <li><strong>Advertising:</strong> Google AdSense</li>
-                                <li><strong>Weather API:</strong> Open-Meteo</li>
-                                <li><strong>Speed Test:</strong> Ookla Speedtest</li>
                                 <li><strong>Marketing:</strong> None</li>
                                 <li><strong>Other:</strong> None</li>
                             </ul>
-                            <p><strong>Google AdSense:</strong> We use Google AdSense to display advertisements on our website. Google AdSense uses cookies to serve ads based on a user's prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet. Users may opt out of personalised advertising by visiting <span class="contextual-link">Google Ads Settings for AdSense</span> (<a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">https://www.google.com/settings/ads</a>).</p>
-                            <p><strong>Open-Meteo:</strong> We use Open-Meteo's free weather API to provide weather information. When you grant location permission, your approximate location (city-level) is sent to Open-Meteo to retrieve weather data. Open-Meteo does not store personal data and only uses location for immediate weather data retrieval.</p>
-                            <p><strong>Ookla Speedtest:</strong> We integrate Ookla Speedtest to measure network performance. When you initiate a speed test, Ookla collects IP address, connection type, and performance metrics. This data is anonymised and aggregated before being shared with us for performance analysis.</p>
+                            <p><strong>Google AdSense:</strong> We use Google AdSense to display advertisements on our website. Google AdSense uses cookies to serve ads based on a user's prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet. Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
                         </div>
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="data-retention-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">5. Data Retention</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="data-retention-content">
+                        <div class="pill-content">
                             <p>We retain data only as long as necessary:</p>
                             <table class="data-table">
-                                <caption>Data Retention Periods</caption>
                                 <thead>
                                     <tr>
-                                        <th>Data Type</th>
-                                        <th>Retention Period</th>
+                                        <th scope="col">Data Type</th>
+                                        <th scope="col">Retention Period</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1235,41 +1031,31 @@
                                         <td>Newsletter Data</td>
                                         <td>None collected</td>
                                     </tr>
-                                    <tr>
-                                        <td>Weather Location Data</td>
-                                        <td>Not stored - processed in real-time only</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Speed Test Data</td>
-                                        <td>30 days (anonymised, aggregated data only)</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="international-transfers-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">6. International Data Transfers</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="international-transfers-content">
+                        <div class="pill-content">
                             <p>Yes, data is transferred to the USA via:</p>
                             <ul>
                                 <li><strong>Cloudflare/GitHub:</strong> The transfer is safeguarded by Cloudflare's and GitHub's participation in the EU-U.S. Data Privacy Framework.</li>
                                 <li><strong>Google AdSense:</strong> Google LLC participates in and has certified its compliance with the EU-U.S. Data Privacy Framework. Google's privacy policy and data transfer mechanisms comply with applicable data protection laws.</li>
-                                <li><strong>Open-Meteo:</strong> Weather data processing occurs in Europe (Germany) and does not involve personal data storage.</li>
-                                <li><strong>Ookla Speedtest:</strong> Ookla (a Ziff Davis company) complies with international data transfer regulations and processes data in accordance with their global privacy policy.</li>
                             </ul>
                         </div>
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="your-rights-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">7. Your Rights</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="your-rights-content">
+                        <div class="pill-content">
                             <p>Under data protection law, you have rights including:</p>
                             <ul>
                                 <li>Your right of access - You have the right to ask us for copies of your personal information.</li>
@@ -1281,50 +1067,46 @@
                             </ul>
                             <p>You are not required to pay any charge for exercising your rights. If you make a request, we have one month to respond to you.</p>
                             <p>To exercise any of these rights, please contact us at: <strong>admin@greenmeans.ovh</strong></p>
-                            <p><strong>Note regarding Google AdSense:</strong> For advertising-related data collected by Google, you can manage your preferences directly through Google's tools at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Centre</a> or opt out of personalised advertising by visiting <span class="contextual-link">Google Ads Settings for personalised advertising</span> (<a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">https://www.google.com/settings/ads</a>).</p>
-                            <p><strong>Note regarding Location Data:</strong> You can revoke location permission at any time through your browser settings. Weather functionality will only work when location permission is granted.</p>
-                            <p><strong>Note regarding Speed Test:</strong> You can choose not to use the Ookla Speedtest feature. No data is collected unless you initiate a speed test.</p>
+                            <p><strong>Note regarding Google AdSense:</strong> For advertising-related data collected by Google, you can manage your preferences directly through Google's tools at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Center</a> or opt out of personalized advertising at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
                         </div>
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="cookies-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">8. Cookies</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="cookies-content">
+                        <div class="pill-content">
                             <p>Our website uses:</p>
                             <ul>
                                 <li><strong>Essential cookies:</strong> Required for the basic functioning of our website</li>
                                 <li><strong>Analytics cookies:</strong> Provided by Cloudflare and GitHub to analyse website traffic</li>
                                 <li><strong>Advertising cookies:</strong> Provided by Google AdSense to display relevant advertisements and measure ad performance</li>
-                                <li><strong>Functional cookies:</strong> For theme preference and dyslexia-friendly mode settings</li>
                             </ul>
                             <p>We ask for consent for non-essential cookies via a cookie banner.</p>
-                            <p><strong>Google AdSense Cookies:</strong> Google uses cookies to serve ads based on a user's prior visits to our website or other websites. These cookies allow Google and its partners to display ads to users based on their visit to our site and/or other sites on the Internet. You can opt out of personalised advertising by visiting <span class="contextual-link">Google Ads Settings for cookie preferences</span> (<a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">https://www.google.com/settings/ads</a>).</p>
-                            <p><strong>Note:</strong> Open-Meteo and Ookla Speedtest do not use cookies on our implementation. Open-Meteo is a stateless API, and Ookla Speedtest uses its own session-based system that does not set persistent cookies on our domain.</p>
+                            <p><strong>Google AdSense Cookies:</strong> Google uses cookies to serve ads based on a user's prior visits to our website or other websites. These cookies allow Google and its partners to display ads to users based on their visit to our site and/or other sites on the Internet. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
                         </div>
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="policy-changes-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">9. Changes to This Privacy Policy</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="policy-changes-content">
+                        <div class="pill-content">
                             <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
                         </div>
                     </div>
                     
                     <div class="privacy-pill">
-                        <div class="pill-header" tabindex="0" role="button" aria-expanded="false" aria-controls="contact-us-content">
+                        <div class="pill-header">
                             <h3 class="pill-title">10. Contact Us</h3>
-                            <span class="pill-icon" aria-hidden="true">+</span>
+                            <span class="pill-icon">+</span>
                         </div>
-                        <div class="pill-content" id="contact-us-content">
+                        <div class="pill-content">
                             <p>If you have any questions about this Privacy Policy, please contact us:</p>
                             <ul>
-                                <li>By email: admin@greenmeans.ovh</li>
+                                <li>By email: <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1334,19 +1116,18 @@
     </main>
 
     <footer>
-        <div class="footer-container-wrapper">
+        <div class="footer-container">
             <div class="accessibility-toggle">
                 <button class="toggle-btn" id="dyslexia-toggle" aria-pressed="false">
                     Dyslexia-Friendly Mode: OFF
                 </button>
             </div>
             
-            <!-- GreenMeans Logo -->
             <div class="footer-logo-container">
-                <svg class="footer-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans organisation logo">
-                    <!-- new PNG image -->
-                    <image href="https://greenmeans.ovh/favicon.png" x="5" y="10" width="30" height="20" alt="Green leaf icon representing GreenMeans" />
-                    <text x="45" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#F0F0F0">GreenMeans</text>
+                <!-- GreenMeans Logo -->
+                <svg class="footer-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans Logo">
+                    <image href="https://greenmeans.ovh/favicon.png" x="5" y="10" width="30" height="20" alt="GreenMeans leaf icon" />
+                    <text x="45" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="white">GreenMeans</text>
                 </svg>
             </div>
             
