@@ -376,6 +376,14 @@
             box-shadow: 0 2px 6px var(--shadow-color);
             overflow: hidden;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+        }
+        
+        .privacy-pill.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .privacy-pill:hover {
@@ -641,87 +649,239 @@
             font-feature-settings: normal !important;
             font-variant: normal !important;
         }
+
+        /* Lazy loading styles - Fixed */
+        .lazy-load {
+            opacity: 1 !important; /* Force visible by default */
+            transform: translateY(0) !important; /* Force visible by default */
+            transition: opacity 0.3s ease, transform 0.3s ease !important;
+        }
+
+        .lazy-load.enhanced {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .lazy-load.enhanced.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 
     <script>
-        // Theme toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const lightLabel = document.getElementById('light-label');
-            const darkLabel = document.getElementById('dark-label');
+        // Modern JS optimizations for V8 - Fixed lazy loading
+        (function() {
+            'use strict';
             
-            // Check for saved theme preference or default to light
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            
-            // Apply the saved theme
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            themeToggle.checked = currentTheme === 'dark';
-            updateToggleLabels(currentTheme);
-            
-            // Toggle theme when switch is clicked
-            themeToggle.addEventListener('change', function() {
-                const newTheme = this.checked ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateToggleLabels(newTheme);
-            });
-            
-            function updateToggleLabels(theme) {
-                if (theme === 'dark') {
-                    lightLabel.style.opacity = '0.5';
-                    darkLabel.style.opacity = '1';
-                } else {
-                    lightLabel.style.opacity = '1';
-                    darkLabel.style.opacity = '0.5';
+            // Theme toggle functionality
+            function initThemeToggle() {
+                const themeToggle = document.getElementById('theme-toggle');
+                const lightLabel = document.getElementById('light-label');
+                const darkLabel = document.getElementById('dark-label');
+                
+                // Check for saved theme preference or default to light
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                
+                // Apply the saved theme
+                document.documentElement.setAttribute('data-theme', currentTheme);
+                themeToggle.checked = currentTheme === 'dark';
+                updateToggleLabels(currentTheme);
+                
+                // Toggle theme when switch is clicked
+                themeToggle.addEventListener('change', function() {
+                    const newTheme = this.checked ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    updateToggleLabels(newTheme);
+                });
+                
+                function updateToggleLabels(theme) {
+                    if (theme === 'dark') {
+                        lightLabel.style.opacity = '0.5';
+                        darkLabel.style.opacity = '1';
+                    } else {
+                        lightLabel.style.opacity = '1';
+                        darkLabel.style.opacity = '0.5';
+                    }
                 }
             }
             
             // Dyslexia toggle functionality
-            const dyslexiaToggle = document.getElementById('dyslexia-toggle');
-            const dyslexiaMode = localStorage.getItem('dyslexiaMode') || 'off';
-            
-            if (dyslexiaMode === 'on') {
-                document.body.classList.add('dyslexia-mode');
-                dyslexiaToggle.setAttribute('aria-pressed', 'true');
-                dyslexiaToggle.textContent = 'Dyslexia-Friendly Mode: ON';
-            }
-            
-            dyslexiaToggle.addEventListener('click', function() {
-                const isPressed = this.getAttribute('aria-pressed') === 'true';
+            function initDyslexiaToggle() {
+                const dyslexiaToggle = document.getElementById('dyslexia-toggle');
+                const dyslexiaMode = localStorage.getItem('dyslexiaMode') || 'off';
                 
-                if (isPressed) {
-                    document.body.classList.remove('dyslexia-mode');
-                    this.setAttribute('aria-pressed', 'false');
-                    this.textContent = 'Dyslexia-Friendly Mode: OFF';
-                    localStorage.setItem('dyslexiaMode', 'off');
-                } else {
+                if (dyslexiaMode === 'on') {
                     document.body.classList.add('dyslexia-mode');
-                    this.setAttribute('aria-pressed', 'true');
-                    this.textContent = 'Dyslexia-Friendly Mode: ON';
-                    localStorage.setItem('dyslexiaMode', 'on');
+                    dyslexiaToggle.setAttribute('aria-pressed', 'true');
+                    dyslexiaToggle.textContent = 'Dyslexia-Friendly Mode: ON';
                 }
-            });
-            
-            // Collapsible pills functionality
-            const pillHeaders = document.querySelectorAll('.pill-header');
-            
-            pillHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const icon = this.querySelector('.pill-icon');
+                
+                dyslexiaToggle.addEventListener('click', function() {
+                    const isPressed = this.getAttribute('aria-pressed') === 'true';
                     
-                    // Toggle active class
-                    content.classList.toggle('active');
-                    
-                    // Rotate icon
-                    if (content.classList.contains('active')) {
-                        icon.textContent = '−';
+                    if (isPressed) {
+                        document.body.classList.remove('dyslexia-mode');
+                        this.setAttribute('aria-pressed', 'false');
+                        this.textContent = 'Dyslexia-Friendly Mode: OFF';
+                        localStorage.setItem('dyslexiaMode', 'off');
                     } else {
-                        icon.textContent = '+';
+                        document.body.classList.add('dyslexia-mode');
+                        this.setAttribute('aria-pressed', 'true');
+                        this.textContent = 'Dyslexia-Friendly Mode: ON';
+                        localStorage.setItem('dyslexiaMode', 'on');
                     }
                 });
-            });
-        });
+            }
+            
+            // Collapsible pills functionality
+            function initCollapsiblePills() {
+                const pillHeaders = document.querySelectorAll('.pill-header');
+                
+                pillHeaders.forEach(header => {
+                    header.addEventListener('click', function() {
+                        const content = this.nextElementSibling;
+                        const icon = this.querySelector('.pill-icon');
+                        
+                        // Toggle active class
+                        content.classList.toggle('active');
+                        
+                        // Rotate icon
+                        if (content.classList.contains('active')) {
+                            icon.textContent = '−';
+                        } else {
+                            icon.textContent = '+';
+                        }
+                    });
+                });
+            }
+            
+            // Optimized lazy loading with staggered loading
+            function initLazyLoading() {
+                const lazyElements = document.querySelectorAll('.privacy-pill');
+                
+                // First, make all elements visible immediately
+                lazyElements.forEach(element => {
+                    element.classList.remove('lazy-load');
+                    element.classList.add('lazy-load');
+                });
+                
+                // Then enhance with staggered animations if supported
+                if ('IntersectionObserver' in window && window.innerWidth > 768) {
+                    // Only use lazy loading on larger screens
+                    lazyElements.forEach(element => {
+                        element.classList.add('enhanced');
+                    });
+                    
+                    const lazyObserver = new IntersectionObserver((entries, observer) => {
+                        entries.forEach((entry, index) => {
+                            if (entry.isIntersecting) {
+                                // Stagger the animations
+                                setTimeout(() => {
+                                    entry.target.classList.add('visible');
+                                    observer.unobserve(entry.target);
+                                }, index * 100); // 100ms delay between each
+                            }
+                        });
+                    }, {
+                        rootMargin: '50px 0px',
+                        threshold: 0.1
+                    });
+                    
+                    lazyElements.forEach(element => {
+                        lazyObserver.observe(element);
+                    });
+                } else {
+                    // On mobile or unsupported browsers, show everything immediately
+                    lazyElements.forEach(element => {
+                        element.classList.add('visible');
+                        element.classList.remove('enhanced');
+                    });
+                }
+            }
+            
+            // Performance optimization - debounce function
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+            
+            // Optimize scroll performance
+            function optimizeScrollPerformance() {
+                let ticking = false;
+                
+                window.addEventListener('scroll', function() {
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            // Perform any scroll-related operations here
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }, { passive: true });
+            }
+            
+            // Initialize everything when DOM is ready
+            function init() {
+                initThemeToggle();
+                initDyslexiaToggle();
+                initCollapsiblePills();
+                optimizeScrollPerformance();
+                
+                // Initialize lazy loading after a short delay
+                setTimeout(initLazyLoading, 100);
+            }
+            
+            // Use DOMContentLoaded for better performance
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+            
+            // Modern JS patterns for better V8 optimization
+            const performanceUtils = {
+                // Memoization for expensive operations
+                memoize: function(fn) {
+                    const cache = new Map();
+                    return function(...args) {
+                        const key = JSON.stringify(args);
+                        if (cache.has(key)) {
+                            return cache.get(key);
+                        }
+                        const result = fn.apply(this, args);
+                        cache.set(key, result);
+                        return result;
+                    };
+                },
+                
+                // Throttle for performance-intensive operations
+                throttle: function(func, limit) {
+                    let inThrottle;
+                    return function() {
+                        const args = arguments;
+                        const context = this;
+                        if (!inThrottle) {
+                            func.apply(context, args);
+                            inThrottle = true;
+                            setTimeout(() => inThrottle = false, limit);
+                        }
+                    };
+                }
+            };
+            
+            // Export for debugging if needed
+            window.performanceUtils = performanceUtils;
+            
+        })();
     </script>
 </head>
 <body>    
@@ -836,6 +996,21 @@
                                         <td>Limited via AdSense</td>
                                         <td>Google AdSense may collect data to serve personalized ads, as detailed in Section 4</td>
                                     </tr>
+                                    <tr>
+                                        <td>Location Data (Weather)</td>
+                                        <td>With User Permission</td>
+                                        <td>For weather functionality, we collect approximate location (city-level) only when you explicitly grant permission. This is processed locally and sent to Open-Meteo API.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Browser Information (Weather)</td>
+                                        <td>Automatic</td>
+                                        <td>We detect browser language settings to provide weather information in your preferred language (via Accept-Language header).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Test Data</td>
+                                        <td>With User Initiation</td>
+                                        <td>When you use the Ookla Speedtest, we collect IP address, connection type, download/upload speeds, latency, and jitter. This data is processed by Ookla and shared with us in anonymized, aggregated form for network performance analysis.</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -867,6 +1042,16 @@
                                         <td>Legitimate Interest/Consent</td>
                                         <td>To display relevant advertisements via Google AdSense to support website operations</td>
                                     </tr>
+                                    <tr>
+                                        <td>Weather Service</td>
+                                        <td>Consent</td>
+                                        <td>To provide local weather information using Open-Meteo API based on user location permission</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Network Performance</td>
+                                        <td>Legitimate Interest</td>
+                                        <td>To analyze network performance and optimize website delivery using Ookla Speedtest</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -884,10 +1069,14 @@
                                 <li><strong>Web Host:</strong> GitHub</li>
                                 <li><strong>Analytics:</strong> Cloudflare/GitHub</li>
                                 <li><strong>Advertising:</strong> Google AdSense</li>
+                                <li><strong>Weather API:</strong> Open-Meteo</li>
+                                <li><strong>Speed Test:</strong> Ookla Speedtest</li>
                                 <li><strong>Marketing:</strong> None</li>
                                 <li><strong>Other:</strong> None</li>
                             </ul>
                             <p><strong>Google AdSense:</strong> We use Google AdSense to display advertisements on our website. Google AdSense uses cookies to serve ads based on a user's prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet. Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.</p>
+                            <p><strong>Open-Meteo:</strong> We use Open-Meteo's free weather API to provide weather information. When you grant location permission, your approximate location (city-level) is sent to Open-Meteo to retrieve weather data. Open-Meteo does not store personal data and only uses location for immediate weather data retrieval.</p>
+                            <p><strong>Ookla Speedtest:</strong> We integrate Ookla Speedtest to measure network performance. When you initiate a speed test, Ookla collects IP address, connection type, and performance metrics. This data is anonymized and aggregated before being shared with us for performance analysis.</p>
                         </div>
                     </div>
                     
@@ -922,6 +1111,14 @@
                                         <td>Newsletter Data</td>
                                         <td>None collected</td>
                                     </tr>
+                                    <tr>
+                                        <td>Weather Location Data</td>
+                                        <td>Not stored - processed in real-time only</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Test Data</td>
+                                        <td>30 days (anonymized, aggregated data only)</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -937,6 +1134,8 @@
                             <ul>
                                 <li><strong>Cloudflare/GitHub:</strong> The transfer is safeguarded by Cloudflare's and GitHub's participation in the EU-U.S. Data Privacy Framework.</li>
                                 <li><strong>Google AdSense:</strong> Google LLC participates in and has certified its compliance with the EU-U.S. Data Privacy Framework. Google's privacy policy and data transfer mechanisms comply with applicable data protection laws.</li>
+                                <li><strong>Open-Meteo:</strong> Weather data processing occurs in Europe (Germany) and does not involve personal data storage.</li>
+                                <li><strong>Ookla Speedtest:</strong> Ookla (a Ziff Davis company) complies with international data transfer regulations and processes data in accordance with their global privacy policy.</li>
                             </ul>
                         </div>
                     </div>
@@ -959,6 +1158,8 @@
                             <p>You are not required to pay any charge for exercising your rights. If you make a request, we have one month to respond to you.</p>
                             <p>To exercise any of these rights, please contact us at: <strong>admin@greenmeans.ovh</strong></p>
                             <p><strong>Note regarding Google AdSense:</strong> For advertising-related data collected by Google, you can manage your preferences directly through Google's tools at <a href="https://myadcenter.google.com/" target="_blank">Google My Ad Center</a> or opt out of personalized advertising at <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.</p>
+                            <p><strong>Note regarding Location Data:</strong> You can revoke location permission at any time through your browser settings. Weather functionality will only work when location permission is granted.</p>
+                            <p><strong>Note regarding Speed Test:</strong> You can choose not to use the Ookla Speedtest feature. No data is collected unless you initiate a speed test.</p>
                         </div>
                     </div>
                     
@@ -973,9 +1174,11 @@
                                 <li><strong>Essential cookies:</strong> Required for the basic functioning of our website</li>
                                 <li><strong>Analytics cookies:</strong> Provided by Cloudflare and GitHub to analyse website traffic</li>
                                 <li><strong>Advertising cookies:</strong> Provided by Google AdSense to display relevant advertisements and measure ad performance</li>
+                                <li><strong>Functional cookies:</strong> For theme preference and dyslexia-friendly mode settings</li>
                             </ul>
                             <p>We ask for consent for non-essential cookies via a cookie banner.</p>
                             <p><strong>Google AdSense Cookies:</strong> Google uses cookies to serve ads based on a user's prior visits to our website or other websites. These cookies allow Google and its partners to display ads to users based on their visit to our site and/or other sites on the Internet. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.</p>
+                            <p><strong>Note:</strong> Open-Meteo and Ookla Speedtest do not use cookies on our implementation. Open-Meteo is a stateless API, and Ookla Speedtest uses its own session-based system that does not set persistent cookies on our domain.</p>
                         </div>
                     </div>
                     
