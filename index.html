@@ -461,7 +461,7 @@
             padding: 40px 20px;
         }
         
-        .footer-container {
+        .footer-container-wrapper {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
@@ -469,9 +469,12 @@
             align-items: center;
         }
         
+        .footer-logo-container {
+            margin-bottom: 15px;
+        }
+        
         .footer-logo {
             height: 50px;
-            margin-bottom: 15px;
         }
         
         .copyright {
@@ -697,13 +700,9 @@
             gap: 10px;
         }
         
-        /* Remove extra footer container */
-        .footer-container-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* Link styling for Google Ads Settings to avoid redundancy */
+        .google-ads-link {
+            font-weight: 600;
         }
     </style>
 
@@ -953,10 +952,8 @@
         
         <div class="header-content">
            <div class="logo-container no-dyslexia-effect">
-    <!-- Embedded Green Party Logo -->
-    <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" aria-labelledby="logo-title logo-subtitle" role="img">
-        <title id="logo-title">GreenMeans Logo</title>
-        <desc id="logo-desc">GreenMeans political organisation logo featuring a green leaf icon with the text "GreenMeans Bold Politics"</desc>
+    <!-- Embedded Green Party Logo - Fixed ARIA references -->
+    <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans logo featuring a green leaf icon with the text GreenMeans Bold Politics">
         <!-- Your PNG image -->
         <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="Green leaf icon representing the GreenMeans political organisation" />
         <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#00A651" class="logo-text">GreenMeans</text>
@@ -1134,7 +1131,7 @@
                                 <li><strong>Marketing:</strong> None</li>
                                 <li><strong>Other:</strong> None</li>
                             </ul>
-                            <p><strong>Google AdSense:</strong> We use Google AdSense to display advertisements on our website. Google AdSense uses cookies to serve ads based on a user's prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet. Users may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+                            <p><strong>Google AdSense:</strong> We use Google AdSense to display advertisements on our website. Google AdSense uses cookies to serve ads based on a user's prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet. Users may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="google-ads-link">Google Ads Settings</a>.</p>
                             <p><strong>Open-Meteo:</strong> We use Open-Meteo's free weather API to provide weather information. When you grant location permission, your approximate location (city-level) is sent to Open-Meteo to retrieve weather data. Open-Meteo does not store personal data and only uses location for immediate weather data retrieval.</p>
                             <p><strong>Ookla Speedtest:</strong> We integrate Ookla Speedtest to measure network performance. When you initiate a speed test, Ookla collects IP address, connection type, and performance metrics. This data is anonymised and aggregated before being shared with us for performance analysis.</p>
                         </div>
@@ -1218,7 +1215,7 @@
                             </ul>
                             <p>You are not required to pay any charge for exercising your rights. If you make a request, we have one month to respond to you.</p>
                             <p>To exercise any of these rights, please contact us at: <strong>admin@greenmeans.ovh</strong></p>
-                            <p><strong>Note regarding Google AdSense:</strong> For advertising-related data collected by Google, you can manage your preferences directly through Google's tools at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Centre</a> or opt out of personalised advertising at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+                            <p><strong>Note regarding Google AdSense:</strong> For advertising-related data collected by Google, you can manage your preferences directly through Google's tools at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Centre</a> or opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="google-ads-link">Google Ads Settings</a>.</p>
                             <p><strong>Note regarding Location Data:</strong> You can revoke location permission at any time through your browser settings. Weather functionality will only work when location permission is granted.</p>
                             <p><strong>Note regarding Speed Test:</strong> You can choose not to use the Ookla Speedtest feature. No data is collected unless you initiate a speed test.</p>
                         </div>
@@ -1238,7 +1235,7 @@
                                 <li><strong>Functional cookies:</strong> For theme preference and dyslexia-friendly mode settings</li>
                             </ul>
                             <p>We ask for consent for non-essential cookies via a cookie banner.</p>
-                            <p><strong>Google AdSense Cookies:</strong> Google uses cookies to serve ads based on a user's prior visits to our website or other websites. These cookies allow Google and its partners to display ads to users based on their visit to our site and/or other sites on the Internet. You can opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+                            <p><strong>Google AdSense Cookies:</strong> Google uses cookies to serve ads based on a user's prior visits to our website or other websites. These cookies allow Google and its partners to display ads to users based on their visit to our site and/or other sites on the Internet. You can opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="google-ads-link">Google Ads Settings</a>.</p>
                             <p><strong>Note:</strong> Open-Meteo and Ookla Speedtest do not use cookies on our implementation. Open-Meteo is a stateless API, and Ookla Speedtest uses its own session-based system that does not set persistent cookies on our domain.</p>
                         </div>
                     </div>
@@ -1280,9 +1277,7 @@
             
             <!-- GreenMeans Logo -->
             <div class="footer-logo-container">
-                <svg class="footer-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" aria-labelledby="footer-logo-title" role="img">
-                    <title id="footer-logo-title">GreenMeans Logo</title>
-                    <desc id="footer-logo-desc">GreenMeans organisation logo</desc>
+                <svg class="footer-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans organisation logo">
                     <!-- new PNG image -->
                     <image href="https://greenmeans.ovh/favicon.png" x="5" y="10" width="30" height="20" alt="Green leaf icon representing GreenMeans" />
                     <text x="45" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="white">GreenMeans</text>
