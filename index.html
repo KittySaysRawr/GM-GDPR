@@ -10,11 +10,11 @@
     <style>
         /* Official Green Party Brand Colours - Updated for better contrast */
         :root {
-            --gp-green: #008F46; /* Darker Primary Green for better contrast (was #00A651) */
-            --gp-light-green: #7EB63A; /* Darker Secondary Green for better contrast (was #8DC63F) */
-            --gp-yellow: #E6D600; /* Darker Yellow for better contrast (was #FFF200) */
-            --gp-dark: #1A1A1A; /* Darker Grey/Black for better contrast (was #2C2A29) */
-            --gp-medium-dark: #333333; /* Medium dark for contrast */
+            --gp-green: #006B35; /* Much darker Primary Green for 4.5:1+ contrast (was #008F46) */
+            --gp-light-green: #5D8F2A; /* Much darker Secondary Green for better contrast (was #7EB63A) */
+            --gp-yellow: #B3A300; /* Much darker Yellow for better contrast (was #E6D600) */
+            --gp-dark: #1A1A1A; /* Darker Grey/Black for better contrast */
+            --gp-medium-dark: #2A2A2A; /* Medium dark for contrast */
             --gp-light: #F5F5F5; /* Lighter Grey for better contrast */
             --gp-white: #FFFFFF; /* White */
             
@@ -23,34 +23,36 @@
             --text-color: var(--gp-dark);
             --header-bg: var(--gp-white);
             --card-bg: var(--gp-white);
-            --footer-bg: #0D0D0D; /* Darker footer for better contrast */
-            --footer-text: #F8F8F8; /* Lighter footer text for better contrast */
+            --footer-bg: #0A0A0A; /* Darker footer for better contrast */
+            --footer-text: #F0F0F0; /* Lighter footer text for better contrast */
             --pill-bg: var(--gp-white);
             --pill-hover: #f0f0f0;
             --subpill-bg: var(--gp-light);
-            --rationale-bg: rgba(126, 182, 58, 0.1); /* Updated with new green */
+            --rationale-bg: rgba(93, 143, 42, 0.1); /* Updated with new green */
             --shadow-color: rgba(0, 0, 0, 0.08);
             --shadow-hover: rgba(0, 0, 0, 0.12);
-            --link-color: #0066CC; /* Better contrast blue for links */
-            --link-hover: #004499; /* Darker blue for hover */
+            --link-color: #0055AA; /* Darker blue for better contrast (was #0066CC) */
+            --link-hover: #003366; /* Even darker blue for hover */
+            --heading-green: #006B35; /* Dark green for headings to ensure 4.5:1 contrast */
         }
         
         /* Dark mode variables - Updated for better contrast */
         [data-theme="dark"] {
-            --bg-color: #0A0A0A; /* Darker background */
-            --text-color: #F0F0F0; /* Lighter text for better contrast */
-            --header-bg: #151515; /* Darker header */
-            --card-bg: #1A1A1A; /* Darker cards */
-            --footer-bg: #050505; /* Darker footer */
+            --bg-color: #080808; /* Darker background */
+            --text-color: #F5F5F5; /* Lighter text for better contrast */
+            --header-bg: #121212; /* Darker header */
+            --card-bg: #151515; /* Darker cards */
+            --footer-bg: #040404; /* Darker footer */
             --footer-text: #E8E8E8; /* Lighter footer text */
-            --pill-bg: #222222; /* Darker pills */
+            --pill-bg: #1E1E1E; /* Darker pills */
             --pill-hover: #2A2A2A;
-            --subpill-bg: #252525;
-            --rationale-bg: rgba(126, 182, 58, 0.2);
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --shadow-hover: rgba(0, 0, 0, 0.6);
-            --link-color: #4DA6FF; /* Lighter blue for dark mode */
-            --link-hover: #80C1FF; /* Even lighter for hover */
+            --subpill-bg: #222222;
+            --rationale-bg: rgba(93, 143, 42, 0.2);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --shadow-hover: rgba(0, 0, 0, 0.7);
+            --link-color: #66B3FF; /* Lighter blue for dark mode with better contrast */
+            --link-hover: #99CCFF; /* Even lighter for hover */
+            --heading-green: #5D8F2A; /* Lighter green for dark mode headings */
         }
         
         * {
@@ -110,7 +112,7 @@
         
         .site-title h1 {
             font-size: 3rem;
-            color: var(--gp-green);
+            color: var(--heading-green); /* Using darker green for better contrast */
             font-weight: 800;
             margin-bottom: 5px;
             text-align: center;
@@ -156,11 +158,11 @@
         }
         
         nav a:hover {
-            color: var(--gp-green);
+            color: var(--heading-green); /* Using darker green */
         }
         
         nav a.active {
-            color: var(--gp-green);
+            color: var(--heading-green); /* Using darker green */
         }
         
         nav a.active::after {
@@ -226,7 +228,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #777; /* Better contrast grey */
+            background-color: #666; /* Darker grey for better contrast */
             transition: .4s;
             border-radius: 34px;
         }
@@ -244,7 +246,7 @@
         }
         
         input:checked + .toggle-slider {
-            background-color: var(--gp-green);
+            background-color: var(--heading-green); /* Using darker green */
         }
         
         input:checked + .toggle-slider:before {
@@ -320,7 +322,7 @@
         }
         
         .privacy-content h3 {
-            color: var(--gp-green);
+            color: var(--heading-green); /* Using darker green for better contrast */
             margin: 30px 0 15px;
             font-size: 1.5rem;
         }
@@ -346,7 +348,7 @@
         
         .last-updated {
             font-style: italic;
-            color: var(--gp-green);
+            color: var(--heading-green); /* Using darker green */
             margin-bottom: 30px;
             text-align: center;
         }
@@ -360,7 +362,7 @@
         .data-table caption {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--gp-green);
+            color: var(--heading-green); /* Using darker green */
             text-align: left;
             padding: 10px 0;
             margin-bottom: 10px;
@@ -374,7 +376,7 @@
         }
         
         .data-table th {
-            background-color: var(--gp-green);
+            background-color: var(--heading-green); /* Using darker green */
             color: white;
         }
         
@@ -450,7 +452,7 @@
         
         .pill-icon {
             font-size: 1.5rem;
-            color: var(--gp-green);
+            color: var(--heading-green); /* Using darker green */
             transition: transform 0.3s;
         }
         
@@ -511,7 +513,7 @@
             text-align: center;
             margin-top: 20px;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.85); /* Better contrast */
+            color: rgba(255, 255, 255, 0.9); /* Better contrast */
         }
         
         /* Accessibility Toggle */
@@ -522,7 +524,7 @@
         }
 
         .toggle-btn {
-            background: var(--gp-green);
+            background: var(--heading-green); /* Using darker green */
             color: white;
             border: 2px solid white;
             padding: 10px 20px;
@@ -539,7 +541,7 @@
 
         .toggle-btn:hover {
             background: white;
-            color: var(--gp-green);
+            color: var(--heading-green); /* Using darker green */
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
@@ -736,28 +738,37 @@
             gap: 10px;
         }
         
-        /* Link styling for Google Ads Settings to avoid redundancy */
-        .google-ads-link {
-            font-weight: 600;
-        }
-        
         /* Ensure table text has good contrast in dark mode */
         [data-theme="dark"] .data-table td {
-            color: #E0E0E0;
+            color: #F0F0F0;
         }
         
         [data-theme="dark"] .data-table th {
-            background-color: var(--gp-green);
+            background-color: var(--heading-green);
             color: white;
         }
         
         [data-theme="dark"] .data-table caption {
-            color: #7EB63A; /* Slightly lighter green for dark mode */
+            color: var(--heading-green);
         }
         
         /* Contextual link styling */
         .contextual-link {
             font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        /* Logo colours for better contrast */
+        .logo-text {
+            fill: var(--heading-green) !important;
+        }
+        
+        .logo-subtext {
+            fill: var(--gp-medium-dark) !important;
+        }
+        
+        [data-theme="dark"] .logo-subtext {
+            fill: #E0E0E0 !important;
         }
     </style>
 
@@ -1011,8 +1022,8 @@
     <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans logo featuring a green leaf icon with the text GreenMeans Bold Politics">
         <!-- Your PNG image -->
         <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="Green leaf icon representing the GreenMeans political organisation" />
-        <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#008F46" class="logo-text">GreenMeans</text>
-        <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" fill="#333333" class="logo-subtext">Bold Politics</text>
+        <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" class="logo-text">GreenMeans</text>
+        <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" class="logo-subtext">Bold Politics</text>
     </svg>
 </div>
             
@@ -1335,7 +1346,7 @@
                 <svg class="footer-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GreenMeans organisation logo">
                     <!-- new PNG image -->
                     <image href="https://greenmeans.ovh/favicon.png" x="5" y="10" width="30" height="20" alt="Green leaf icon representing GreenMeans" />
-                    <text x="45" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#F8F8F8">GreenMeans</text>
+                    <text x="45" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#F0F0F0">GreenMeans</text>
                 </svg>
             </div>
             
