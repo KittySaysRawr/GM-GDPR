@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,25 +18,7 @@
             --gp-light: #F1F1F1;
             --gp-white: #FFFFFF;
             
-            /* Light mode variables (default) */
-            --bg-color: var(--gp-white);
-            --text-color: var(--gp-dark);
-            --header-bg: var(--gp-white);
-            --card-bg: var(--gp-white);
-            --footer-bg: #111111;
-            --footer-text: var(--gp-white);
-            --pill-bg: var(--gp-white);
-            --pill-hover: #f0f0f0;
-            --subpill-bg: #f9f9f9;
-            --rationale-bg: rgba(125, 182, 60, 0.1);
-            --shadow-color: rgba(0, 0, 0, 0.08);
-            --shadow-hover: rgba(0, 0, 0, 0.12);
-            --link-color: #0066CC;
-            --focus-outline: 3px solid var(--gp-yellow);
-        }
-        
-        /* Dark mode variables */
-        [data-theme="dark"] {
+            /* Dark mode variables (default) */
             --bg-color: #0A0A0A;
             --text-color: #F0F0F0;
             --header-bg: #1A1A1A;
@@ -53,11 +35,28 @@
             --focus-outline: 3px solid var(--gp-yellow);
         }
         
+        /* Light mode variables */
+        [data-theme="light"] {
+            --bg-color: var(--gp-white);
+            --text-color: var(--gp-dark);
+            --header-bg: var(--gp-white);
+            --card-bg: var(--gp-white);
+            --footer-bg: #111111;
+            --footer-text: var(--gp-white);
+            --pill-bg: var(--gp-white);
+            --pill-hover: #f0f0f0;
+            --subpill-bg: #f9f9f9;
+            --rationale-bg: rgba(125, 182, 60, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --shadow-hover: rgba(0, 0, 0, 0.12);
+            --link-color: #0066CC;
+            --focus-outline: 3px solid var(--gp-yellow);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
         
         html {
@@ -70,7 +69,8 @@
             background-color: var(--bg-color);
             line-height: 1.6;
             font-size: 18px;
-            position: relative;
+            padding-top: 0; /* No fixed header padding needed */
+            transition: background-color 0.3s, color 0.3s;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -92,48 +92,13 @@
             font-size: 1.5rem;
         }
         
-        /* Skip to main content link - ALWAYS VISIBLE */
-        .skip-link {
-            position: fixed;
-            top: 15px;
-            left: 20px;
-            background: var(--gp-green);
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            z-index: 1001;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
-            border: 2px solid transparent;
-            box-shadow: 0 2px 6px var(--shadow-color);
-            transition: all 0.3s ease;
-            opacity: 0.9;
-        }
-        
-        .skip-link:hover {
-            background: var(--gp-light-green);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow-hover);
-            opacity: 1;
-        }
-        
-        .skip-link:focus {
-            outline: var(--focus-outline);
-            outline-offset: 2px;
-            border-color: var(--gp-yellow);
-            opacity: 1;
-        }
-        
-        /* Header Styles */
+        /* Header Styles - NOT FIXED */
         header {
             background-color: var(--header-bg);
             box-shadow: 0 2px 10px var(--shadow-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            position: relative;
             padding: 20px 0;
+            z-index: 100;
         }
         
         .header-content {
@@ -143,7 +108,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
         }
         
         .logo-container {
@@ -209,95 +173,13 @@
             background-color: var(--gp-yellow);
         }
         
-        /* Theme Toggle */
-        .theme-toggle {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .toggle-label {
-            font-size: 1rem;
-            color: var(--text-color);
-            font-weight: 600;
-            transition: opacity 0.3s;
-        }
-
-        #light-label {
-            opacity: 1;
-        }
-
-        #dark-label {
-            opacity: 0.5;
-        }
-
-        [data-theme="dark"] #light-label {
-            opacity: 0.5;
-        }
-
-        [data-theme="dark"] #dark-label {
-            opacity: 1;
-        }
-        
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .toggle-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #666;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        
-        .toggle-slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .toggle-slider {
-            background-color: var(--gp-green);
-        }
-        
-        input:checked + .toggle-slider:before {
-            transform: translateX(26px);
-        }
-        
-        .toggle-switch:focus-within .toggle-slider {
-            outline: var(--focus-outline);
-            outline-offset: 2px;
-        }
-        
-        /* Hero Section */
+        /* Hero Section - Fixed overlap */
         .hero {
             background: linear-gradient(135deg, var(--gp-green) 0%, var(--gp-light-green) 100%);
             color: var(--gp-white);
             padding: 80px 20px;
             text-align: center;
+            margin-top: 0;
         }
         
         .hero-content {
@@ -401,7 +283,7 @@
         }
         
         /* Link styling */
-        a:not(.toggle-btn):not(nav a):not(.skip-link) {
+        a:not(.toggle-btn):not(nav a):not(.accessibility-btn) {
             color: var(--link-color);
             text-decoration: underline;
             text-decoration-thickness: 2px;
@@ -410,14 +292,14 @@
             font-weight: 600;
         }
         
-        a:not(.toggle-btn):not(nav a):not(.skip-link):hover,
-        a:not(.toggle-btn):not(nav a):not(.skip-link):focus {
+        a:not(.toggle-btn):not(nav a):not(.accessibility-btn):hover,
+        a:not(.toggle-btn):not(nav a):not(.accessibility-btn):focus {
             color: var(--gp-green);
             text-decoration-thickness: 3px;
             outline: none;
         }
         
-        a:not(.toggle-btn):not(nav a):not(.skip-link):focus-visible {
+        a:not(.toggle-btn):not(nav a):not(.accessibility-btn):focus-visible {
             outline: var(--focus-outline);
             outline-offset: 4px;
             text-decoration: none;
@@ -428,6 +310,8 @@
             border-collapse: collapse;
             margin: 25px 0;
             font-size: 1rem;
+            overflow-x: auto;
+            display: block;
         }
         
         .data-table caption {
@@ -443,6 +327,7 @@
             padding: 16px 20px;
             text-align: left;
             vertical-align: top;
+            min-width: 150px;
         }
         
         .data-table th {
@@ -465,7 +350,7 @@
             border-color: #444;
         }
         
-        /* Collapsible Pills - FIXED */
+        /* Collapsible Pills */
         .privacy-pills {
             display: flex;
             flex-direction: column;
@@ -498,6 +383,7 @@
             width: 100%;
             text-align: left;
             border: none;
+            position: relative;
         }
         
         .pill-header:hover,
@@ -517,7 +403,8 @@
             font-size: 1.3rem;
             color: var(--text-color);
             margin: 0;
-            pointer-events: none;
+            flex: 1;
+            padding-right: 20px;
         }
         
         .pill-icon {
@@ -527,25 +414,36 @@
             font-weight: 700;
             min-width: 30px;
             text-align: center;
-            margin-left: 15px;
-            pointer-events: none;
+            flex-shrink: 0;
         }
         
         .pill-content {
-            padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.5s ease;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             background-color: var(--subpill-bg);
         }
         
         .pill-content.expanded {
-            padding: 25px;
             max-height: 5000px;
+            overflow: visible;
+        }
+        
+        .pill-content-inner {
+            padding: 0 25px 25px 25px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s;
+        }
+        
+        .pill-content.expanded .pill-content-inner {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .pill-content p {
             margin-bottom: 20px;
+            line-height: 1.7;
         }
         
         .pill-content ul,
@@ -556,14 +454,16 @@
         
         .pill-content li {
             margin-bottom: 12px;
+            line-height: 1.7;
         }
         
-        /* Footer - UPDATED LAYOUT */
+        /* Footer - Updated with Accessibility Dropdown */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
             padding: 40px 20px 30px;
             margin-top: 60px;
+            position: relative;
         }
         
         .footer-container {
@@ -606,15 +506,16 @@
             order: 1;
         }
         
-        /* Moved accessibility toggle to bottom */
-        .accessibility-toggle {
+        /* Accessibility Dropdown in Footer */
+        .accessibility-section {
             display: flex;
             justify-content: center;
             width: 100%;
             order: 2;
+            position: relative;
         }
 
-        .toggle-btn {
+        .accessibility-btn {
             background: var(--gp-green);
             color: var(--gp-white);
             border: 2px solid var(--gp-white);
@@ -630,30 +531,200 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        .toggle-btn:hover {
+        .accessibility-btn:hover {
             background: var(--gp-white);
             color: var(--gp-green);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .toggle-btn:focus {
+        .accessibility-btn:focus {
             outline: var(--focus-outline);
             outline-offset: 4px;
         }
 
-        .toggle-btn[aria-pressed="true"] {
+        .accessibility-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .accessibility-btn.expanded svg {
+            transform: rotate(180deg);
+        }
+
+        /* Accessibility Dropdown Menu */
+        .accessibility-dropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            min-width: 300px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid var(--gp-green);
+        }
+
+        .accessibility-dropdown.expanded {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-20px);
+        }
+
+        .accessibility-dropdown h3 {
+            color: var(--gp-green);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .accessibility-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .accessibility-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accessibility-option:last-child {
+            border-bottom: none;
+        }
+
+        .accessibility-option label {
+            font-weight: 600;
+            color: var(--text-color);
+            flex: 1;
+            text-align: left;
+        }
+
+        /* Theme Toggle in Dropdown */
+        .theme-toggle-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .theme-toggle-dropdown .toggle-label {
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .theme-toggle-dropdown #light-label-dropdown {
+            opacity: 0.5;
+        }
+
+        .theme-toggle-dropdown #dark-label-dropdown {
+            opacity: 1;
+        }
+
+        [data-theme="light"] .theme-toggle-dropdown #light-label-dropdown {
+            opacity: 1;
+        }
+
+        [data-theme="light"] .theme-toggle-dropdown #dark-label-dropdown {
+            opacity: 0.5;
+        }
+
+        .toggle-switch-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch-dropdown input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider-dropdown {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--gp-green);
+            transition: .4s;
+            border-radius: 28px;
+        }
+
+        .toggle-slider-dropdown:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider-dropdown {
+            background-color: #666;
+        }
+
+        input:checked + .toggle-slider-dropdown:before {
+            transform: translateX(22px);
+        }
+
+        /* Dyslexia Toggle in Dropdown */
+        .dyslexia-toggle-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .dyslexia-toggle-btn {
+            background: var(--gp-green);
+            color: var(--gp-white);
+            border: 2px solid var(--gp-green);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .dyslexia-toggle-btn:hover {
+            background: var(--gp-white);
+            color: var(--gp-green);
+        }
+
+        .dyslexia-toggle-btn.active {
             background: var(--gp-yellow);
             color: var(--gp-dark);
             border-color: var(--gp-yellow);
         }
 
-        .toggle-btn[aria-pressed="true"]:hover {
+        .dyslexia-toggle-btn.active:hover {
             background: var(--gp-white);
             color: var(--gp-dark);
-            border-color: var(--gp-white);
         }
-        
+
         /* Back to top button */
         .back-to-top {
             position: fixed;
@@ -743,20 +814,6 @@
                 font-size: 1rem;
             }
             
-            /* Adjust skip link for mobile */
-            .skip-link {
-                top: 10px;
-                left: 10px;
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-            
-            .theme-toggle {
-                position: static;
-                margin-top: 15px;
-                justify-content: center;
-            }
-            
             .hero {
                 padding: 60px 15px;
             }
@@ -774,14 +831,13 @@
             }
             
             .data-table {
-                display: block;
-                overflow-x: auto;
                 font-size: 0.95rem;
             }
             
             .data-table th,
             .data-table td {
                 padding: 12px 15px;
+                min-width: 120px;
             }
             
             .pill-header {
@@ -794,6 +850,10 @@
             
             .pill-icon {
                 font-size: 1.5rem;
+            }
+            
+            .pill-content-inner {
+                padding: 0 20px 20px 20px;
             }
             
             /* Footer responsive */
@@ -809,9 +869,14 @@
                 font-size: 1rem;
             }
             
-            .toggle-btn {
+            .accessibility-btn {
                 padding: 10px 20px;
                 font-size: 0.95rem;
+            }
+            
+            .accessibility-dropdown {
+                min-width: 280px;
+                padding: 15px;
             }
             
             .back-to-top {
@@ -840,14 +905,6 @@
                 padding: 12px 0;
             }
             
-            /* Adjust skip link for very small screens */
-            .skip-link {
-                top: 8px;
-                left: 8px;
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-            
             .hero {
                 padding: 50px 12px;
             }
@@ -865,7 +922,11 @@
             }
             
             .pill-title {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+            
+            .pill-content-inner {
+                padding: 0 18px 18px 18px;
             }
             
             /* Footer small screen adjustments */
@@ -877,9 +938,21 @@
                 font-size: 0.95rem;
             }
             
-            .toggle-btn {
+            .accessibility-btn {
                 padding: 8px 16px;
                 font-size: 0.9rem;
+            }
+            
+            .accessibility-dropdown {
+                min-width: 260px;
+                left: 20px;
+                right: 20px;
+                transform: translateX(0) translateY(-10px);
+                width: auto;
+            }
+            
+            .accessibility-dropdown.expanded {
+                transform: translateX(0) translateY(-20px);
             }
             
             .back-to-top {
@@ -913,12 +986,12 @@
         .dyslexia-mode input:not([type="checkbox"]):not([type="radio"]),
         .dyslexia-mode textarea,
         .dyslexia-mode select,
-        .dyslexia-mode button:not(.toggle-btn) {
+        .dyslexia-mode button:not(.accessibility-btn) {
             font-family: 'OpenDyslexic', 'Lexie Readable', 'Tiresias', 'EasyReading', 'Sylexiad', sans-serif !important;
         }
 
         /* Apply the same font stack to the toggle button text */
-        .dyslexia-mode .toggle-btn {
+        .dyslexia-mode .accessibility-btn {
             font-family: 'OpenDyslexic', 'Lexie Readable', 'Tiresias', 'EasyReading', 'Sylexiad', sans-serif !important;
             letter-spacing: 0.05em !important;
         }
@@ -926,7 +999,7 @@
         /* Preserve special fonts for certain elements */
         .dyslexia-mode .no-dyslexia-effect,
         .dyslexia-mode .pill-icon,
-        .dyslexia-mode .toggle-switch,
+        .dyslexia-mode .toggle-switch-dropdown,
         .dyslexia-mode .logo-text,
         .dyslexia-mode .logo-subtext,
         .dyslexia-mode h1,
@@ -990,11 +1063,9 @@
 
         /* Print styles */
         @media print {
-            .theme-toggle,
-            .accessibility-toggle,
+            .accessibility-section,
             .back-to-top,
-            nav,
-            .skip-link {
+            nav {
                 display: none !important;
             }
             
@@ -1024,44 +1095,56 @@
             .hero h2 {
                 color: #000 !important;
             }
+            
+            .pill-content {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+            
+            .pill-content-inner {
+                opacity: 1 !important;
+                transform: none !important;
+                padding: 0 25px 25px 25px !important;
+            }
         }
     </style>
 
     <script>
-        // Theme toggle functionality
+        // Set dark mode as default
         document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const lightLabel = document.getElementById('light-label');
-            const darkLabel = document.getElementById('dark-label');
+            // Theme toggle functionality (now in footer dropdown)
+            const themeToggle = document.getElementById('theme-toggle-dropdown');
+            const lightLabel = document.getElementById('light-label-dropdown');
+            const darkLabel = document.getElementById('dark-label-dropdown');
             
-            // Check for saved theme preference or default to light
-            const currentTheme = localStorage.getItem('theme') || 'light';
+            // Check for saved theme preference or default to dark
+            const currentTheme = localStorage.getItem('theme') || 'dark';
             
             // Apply the saved theme
             document.documentElement.setAttribute('data-theme', currentTheme);
-            themeToggle.checked = currentTheme === 'dark';
+            themeToggle.checked = currentTheme === 'light'; // Inverted for dark default
             updateToggleLabels(currentTheme);
             
             // Toggle theme when switch is clicked
             themeToggle.addEventListener('change', function() {
-                const newTheme = this.checked ? 'dark' : 'light';
+                const newTheme = this.checked ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
                 updateToggleLabels(newTheme);
             });
             
             function updateToggleLabels(theme) {
-                if (theme === 'dark') {
-                    lightLabel.style.opacity = '0.5';
-                    darkLabel.style.opacity = '1';
-                } else {
+                if (theme === 'light') {
                     lightLabel.style.opacity = '1';
                     darkLabel.style.opacity = '0.5';
+                } else {
+                    lightLabel.style.opacity = '0.5';
+                    darkLabel.style.opacity = '1';
                 }
             }
             
-            // Dyslexia toggle functionality
-            const dyslexiaToggle = document.getElementById('dyslexia-toggle');
+            // Dyslexia toggle functionality (now in footer dropdown)
+            const dyslexiaToggleBtn = document.getElementById('dyslexia-toggle-dropdown');
             const dyslexiaMode = localStorage.getItem('dyslexiaMode') || 'off';
             
             // Function to load OpenDyslexic font from Google Fonts API
@@ -1086,29 +1169,26 @@
             
             if (dyslexiaMode === 'on') {
                 document.body.classList.add('dyslexia-mode');
-                dyslexiaToggle.setAttribute('aria-pressed', 'true');
-                dyslexiaToggle.textContent = 'Dyslexia-Friendly Mode: ON';
-                dyslexiaToggle.setAttribute('aria-label', 'Dyslexia-Friendly Mode is currently ON. Click to turn OFF.');
+                dyslexiaToggleBtn.classList.add('active');
+                dyslexiaToggleBtn.textContent = 'ON';
                 loadDyslexiaFont();
             } else {
-                dyslexiaToggle.setAttribute('aria-label', 'Dyslexia-Friendly Mode is currently OFF. Click to turn ON.');
+                dyslexiaToggleBtn.textContent = 'OFF';
             }
             
-            dyslexiaToggle.addEventListener('click', function() {
-                const isPressed = this.getAttribute('aria-pressed') === 'true';
+            dyslexiaToggleBtn.addEventListener('click', function() {
+                const isActive = this.classList.contains('active');
                 
-                if (isPressed) {
+                if (isActive) {
                     document.body.classList.remove('dyslexia-mode');
-                    this.setAttribute('aria-pressed', 'false');
-                    this.textContent = 'Dyslexia-Friendly Mode: OFF';
-                    this.setAttribute('aria-label', 'Dyslexia-Friendly Mode is currently OFF. Click to turn ON.');
+                    this.classList.remove('active');
+                    this.textContent = 'OFF';
                     localStorage.setItem('dyslexiaMode', 'off');
                     removeDyslexiaFont();
                 } else {
                     document.body.classList.add('dyslexia-mode');
-                    this.setAttribute('aria-pressed', 'true');
-                    this.textContent = 'Dyslexia-Friendly Mode: ON';
-                    this.setAttribute('aria-label', 'Dyslexia-Friendly Mode is currently ON. Click to turn OFF.');
+                    this.classList.add('active');
+                    this.textContent = 'ON';
                     localStorage.setItem('dyslexiaMode', 'on');
                     loadDyslexiaFont();
                 }
@@ -1119,12 +1199,13 @@
                 setTimeout(loadDyslexiaFont, 100);
             }
             
-            // Collapsible pills functionality - FIXED VERSION
+            // Collapsible pills functionality
             function initializePills() {
                 const pillHeaders = document.querySelectorAll('.pill-header');
                 
                 pillHeaders.forEach(header => {
                     const content = header.nextElementSibling;
+                    const innerContent = content.querySelector('.pill-content-inner');
                     const icon = header.querySelector('.pill-icon');
                     
                     // Set initial state
@@ -1161,49 +1242,43 @@
                 const icon = header.querySelector('.pill-icon');
                 const isExpanded = header.getAttribute('aria-expanded') === 'true';
                 
-                // Close all other pills
-                if (!isExpanded) {
+                if (isExpanded) {
+                    // Collapse
+                    content.classList.remove('expanded');
+                    setTimeout(() => {
+                        content.style.maxHeight = '0';
+                    }, 10);
+                    header.setAttribute('aria-expanded', 'false');
+                    icon.textContent = '+';
+                } else {
+                    // Close all other pills first
                     const allExpanded = document.querySelectorAll('.pill-header[aria-expanded="true"]');
                     allExpanded.forEach(expandedHeader => {
                         if (expandedHeader !== header) {
                             const expandedContent = expandedHeader.nextElementSibling;
                             expandedHeader.setAttribute('aria-expanded', 'false');
                             expandedContent.classList.remove('expanded');
-                            expandedContent.style.maxHeight = '0';
+                            setTimeout(() => {
+                                expandedContent.style.maxHeight = '0';
+                            }, 10);
                             expandedHeader.querySelector('.pill-icon').textContent = '+';
                         }
                     });
-                }
-                
-                // Toggle current pill
-                if (isExpanded) {
-                    // Collapse
-                    content.classList.remove('expanded');
-                    content.style.maxHeight = '0';
-                    header.setAttribute('aria-expanded', 'false');
-                    icon.textContent = '+';
-                    announceToScreenReader('Section collapsed');
-                } else {
-                    // Expand
+                    
+                    // Expand current pill
                     content.classList.add('expanded');
-                    content.style.maxHeight = content.scrollHeight + 'px';
+                    // Calculate exact height including inner content
+                    const innerContent = content.querySelector('.pill-content-inner');
+                    const computedStyle = window.getComputedStyle(innerContent);
+                    const paddingTop = parseFloat(computedStyle.paddingTop);
+                    const paddingBottom = parseFloat(computedStyle.paddingBottom);
+                    const innerHeight = innerContent.scrollHeight;
+                    const totalHeight = paddingTop + innerHeight + paddingBottom;
+                    
+                    content.style.maxHeight = totalHeight + 'px';
                     header.setAttribute('aria-expanded', 'true');
                     icon.textContent = '−';
-                    announceToScreenReader('Section expanded');
                 }
-            }
-            
-            function announceToScreenReader(message) {
-                const announcement = document.createElement('div');
-                announcement.setAttribute('aria-live', 'polite');
-                announcement.setAttribute('aria-atomic', 'true');
-                announcement.classList.add('sr-only');
-                announcement.textContent = message;
-                document.body.appendChild(announcement);
-                
-                setTimeout(() => {
-                    document.body.removeChild(announcement);
-                }, 1000);
             }
             
             // Initialize pills after DOM is loaded
@@ -1216,15 +1291,62 @@
             backToTopBtn.innerHTML = '↑';
             backToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                document.querySelector('.skip-link').focus();
             });
             document.body.appendChild(backToTopBtn);
             
             window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Show/hide back to top button
+                if (scrollTop > 300) {
                     backToTopBtn.classList.add('visible');
                 } else {
                     backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Accessibility dropdown functionality
+            const accessibilityBtn = document.getElementById('accessibility-btn');
+            const accessibilityDropdown = document.getElementById('accessibility-dropdown');
+            
+            accessibilityBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isExpanded = this.classList.contains('expanded');
+                
+                if (isExpanded) {
+                    this.classList.remove('expanded');
+                    accessibilityDropdown.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                    accessibilityDropdown.classList.add('expanded');
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!accessibilityBtn.contains(e.target) && !accessibilityDropdown.contains(e.target)) {
+                    accessibilityBtn.classList.remove('expanded');
+                    accessibilityDropdown.classList.remove('expanded');
+                }
+            });
+            
+            // Close dropdown on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    accessibilityBtn.classList.remove('expanded');
+                    accessibilityDropdown.classList.remove('expanded');
+                    
+                    // Also close any expanded pills
+                    const expandedPills = document.querySelectorAll('.pill-header[aria-expanded="true"]');
+                    expandedPills.forEach(pill => {
+                        const content = pill.nextElementSibling;
+                        pill.setAttribute('aria-expanded', 'false');
+                        content.classList.remove('expanded');
+                        setTimeout(() => {
+                            content.style.maxHeight = '0';
+                        }, 10);
+                        pill.querySelector('.pill-icon').textContent = '+';
+                    });
                 }
             });
             
@@ -1233,20 +1355,6 @@
             if (mainContent && !mainContent.id) {
                 mainContent.id = 'main-content';
             }
-            
-            // Improve focus management for pills
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    const expandedPills = document.querySelectorAll('.pill-header[aria-expanded="true"]');
-                    expandedPills.forEach(pill => {
-                        const content = pill.nextElementSibling;
-                        pill.setAttribute('aria-expanded', 'false');
-                        content.classList.remove('expanded');
-                        content.style.maxHeight = '0';
-                        pill.querySelector('.pill-icon').textContent = '+';
-                    });
-                }
-            });
             
             // Screen reader only class
             const style = document.createElement('style');
@@ -1268,19 +1376,9 @@
     </script>
 </head>
 <body>    
-    <!-- Skip to main content link - ALWAYS VISIBLE -->
-    <a href="#main-content" class="skip-link">Skip to Content</a>
+    <!-- REMOVED Skip to main content link -->
     
     <header role="banner">
-        <div class="theme-toggle">
-            <span class="toggle-label" id="light-label">Light</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="theme-toggle" aria-label="Toggle between light and dark mode">
-                <span class="toggle-slider"></span>
-            </label>
-            <span class="toggle-label" id="dark-label">Dark</span>
-        </div>
-        
         <div class="header-content">
            <div class="logo-container no-dyslexia-effect">
                 <!-- Embedded Green Party Logo -->
@@ -1289,7 +1387,7 @@
                     <desc id="logo-desc">Green leaf icon with the text GreenMeans Bold Politics</desc>
                     <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="" />
                     <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#008040" class="logo-text">GreenMeans</text>
-                    <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" fill="#1A1A1A" class="logo-subtext">Bold Politics</text>
+                    <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" fill="#F0F0F0" class="logo-subtext">Bold Politics</text>
                 </svg>
             </div>
             
@@ -1329,11 +1427,13 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>The data controller for this website is:</p>
-                            <ul>
-                                <li><strong>Entity:</strong> GreenMeans, a sole proprietor</li>
-                                <li><strong>Contact Email:</strong> <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></li>
-                            </ul>
+                            <div class="pill-content-inner">
+                                <p>The data controller for this website is:</p>
+                                <ul>
+                                    <li><strong>Entity:</strong> GreenMeans, a sole proprietor</li>
+                                    <li><strong>Contact Email:</strong> <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     
@@ -1343,49 +1443,51 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>We collect minimal data to operate our website effectively:</p>
-                            <table class="data-table">
-                                <caption>Data Collection Overview</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Data Type</th>
-                                        <th scope="col">Collection Status</th>
-                                        <th scope="col">Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Contact Forms</td>
-                                        <td>None</td>
-                                        <td>We do not collect personal data through contact forms</td>
-                                    </tr>
-                                    <tr>
-                                        <td>User Accounts</td>
-                                        <td>None</td>
-                                        <td>We do not offer user registration or accounts</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Newsletter</td>
-                                        <td>None</td>
-                                        <td>We do not operate a newsletter service</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Comments</td>
-                                        <td>None</td>
-                                        <td>No commenting features are available on our website</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Technical Data</td>
-                                        <td>Limited</td>
-                                        <td>We do not use Google Analytics. We use privacy-friendly analytics via Cloudflare Web Analytics and Netlify Analytics, which respect user privacy.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Advertising Data</td>
-                                        <td>Limited via AdSense</td>
-                                        <td>Google AdSense may collect data to serve personalized ads, as detailed in Section 4</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="pill-content-inner">
+                                <p>We collect minimal data to operate our website effectively:</p>
+                                <table class="data-table">
+                                    <caption>Data Collection Overview</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Data Type</th>
+                                            <th scope="col">Collection Status</th>
+                                            <th scope="col">Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Contact Forms</td>
+                                            <td>None</td>
+                                            <td>We do not collect personal data through contact forms</td>
+                                        </tr>
+                                        <tr>
+                                            <td>User Accounts</td>
+                                            <td>None</td>
+                                            <td>We do not offer user registration or accounts</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Newsletter</td>
+                                            <td>None</td>
+                                            <td>We do not operate a newsletter service</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Comments</td>
+                                            <td>None</td>
+                                            <td>No commenting features are available on our website</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Technical Data</td>
+                                            <td>Limited</td>
+                                            <td>We do not use Google Analytics. We use privacy-friendly analytics via Cloudflare Web Analytics and Netlify Analytics, which respect user privacy.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Advertising Data</td>
+                                            <td>Limited via AdSense</td>
+                                            <td>Google AdSense may collect data to serve personalized ads, as detailed in Section 4</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     
@@ -1395,39 +1497,41 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>We process data for the following purposes:</p>
-                            <table class="data-table">
-                                <caption>Data Processing Purposes</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Purpose</th>
-                                        <th scope="col">Lawful Basis</th>
-                                        <th scope="col">Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Website Analytics</td>
-                                        <td>Consent/Legitimate Interest</td>
-                                        <td>To analyse website traffic using privacy-first analytics (Cloudflare & Netlify Analytics) that don't use cookies or track individual users</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Advertising</td>
-                                        <td>Legitimate Interest/Consent</td>
-                                        <td>To display relevant advertisements via Google AdSense to support website operations</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Website Hosting & Security</td>
-                                        <td>Legitimate Interest</td>
-                                        <td>To host, secure, and serve our website via Netlify with Cloudflare CDN and DDoS protection</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Version Control</td>
-                                        <td>Legitimate Interest</td>
-                                        <td>To manage website code using GitHub's FOSS platform</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="pill-content-inner">
+                                <p>We process data for the following purposes:</p>
+                                <table class="data-table">
+                                    <caption>Data Processing Purposes</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Purpose</th>
+                                            <th scope="col">Lawful Basis</th>
+                                            <th scope="col">Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Website Analytics</td>
+                                            <td>Consent/Legitimate Interest</td>
+                                            <td>To analyse website traffic using privacy-first analytics (Cloudflare & Netlify Analytics) that don't use cookies or track individual users</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Advertising</td>
+                                            <td>Legitimate Interest/Consent</td>
+                                            <td>To display relevant advertisements via Google AdSense to support website operations</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Website Hosting & Security</td>
+                                            <td>Legitimate Interest</td>
+                                            <td>To host, secure, and serve our website via Netlify with Cloudflare CDN and DDoS protection</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Version Control</td>
+                                            <td>Legitimate Interest</td>
+                                            <td>To manage website code using GitHub's FOSS platform</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     
@@ -1437,63 +1541,65 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>We use the following third-party services, with emphasis on Free and Open Source Software (FOSS):</p>
-                            <table class="data-table">
-                                <caption>Third-Party Services & FOSS Components</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Service</th>
-                                        <th scope="col">Purpose</th>
-                                        <th scope="col">FOSS/Privacy Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>GitHub</strong></td>
-                                        <td>Version control and code hosting for our website's source code</td>
-                                        <td>Built on open source; Our code is publicly available; <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Netlify</strong></td>
-                                        <td>Web hosting, deployment, and serverless functions</td>
-                                        <td>Uses open-source build tools; <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify Privacy Policy</a>; Netlify Analytics is privacy-friendly</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Cloudflare</strong></td>
-                                        <td>CDN, DNS, DDoS protection, and Web Analytics</td>
-                                        <td>Many open-source contributions; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a>; Cloudflare Web Analytics respects privacy</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Google Fonts API</strong></td>
-                                        <td>Web font delivery (Montserrat, Open Sans)</td>
-                                        <td>Open source fonts; <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">Google Fonts Privacy FAQ</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Google AdSense</strong></td>
-                                        <td>Advertising platform</td>
-                                        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>; Users can opt out of personalized ads</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>OpenDyslexic Font</strong></td>
-                                        <td>Accessibility font for dyslexia mode</td>
-                                        <td>Free open source font; Licensed under SIL Open Font License</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                            <p><strong>Commitment to FOSS:</strong> We prioritize Free and Open Source Software wherever possible. Our website code is publicly available on GitHub, and we use FOSS components including:</p>
-                            <ul>
-                                <li>Open source web fonts (Montserrat, Open Sans, OpenDyslexic)</li>
-                                <li>Open standards (HTML5, CSS3, JavaScript ES6+)</li>
-                                <li>Public APIs with transparent data practices</li>
-                                <li>Privacy-respecting analytics that don't track individual users</li>
-                            </ul>
-                            
-                            <p><strong>Cloudflare Web Analytics:</strong> Unlike traditional analytics, Cloudflare Web Analytics is a privacy-first service that doesn't use cookies or collect personal data. It provides aggregated, anonymized statistics about website traffic. For more information, see <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a>.</p>
-                            
-                            <p><strong>Netlify Analytics:</strong> Netlify Analytics provides privacy-friendly analytics without tracking individual users across the web. It doesn't use cookies and complies with GDPR. For more information, see <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's Privacy Policy</a>.</p>
-                            
-                            <p><strong>Google AdSense:</strong> We use Google AdSense to display advertisements. Google uses cookies to serve ads based on a user's prior visits to our website or other websites. Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+                            <div class="pill-content-inner">
+                                <p>We use the following third-party services, with emphasis on Free and Open Source Software (FOSS):</p>
+                                <table class="data-table">
+                                    <caption>Third-Party Services & FOSS Components</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Service</th>
+                                            <th scope="col">Purpose</th>
+                                            <th scope="col">FOSS/Privacy Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>GitHub</strong></td>
+                                            <td>Version control and code hosting for our website's source code</td>
+                                            <td>Built on open source; Our code is publicly available; <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Netlify</strong></td>
+                                            <td>Web hosting, deployment, and serverless functions</td>
+                                            <td>Uses open-source build tools; <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify Privacy Policy</a>; Netlify Analytics is privacy-friendly</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Cloudflare</strong></td>
+                                            <td>CDN, DNS, DDoS protection, and Web Analytics</td>
+                                            <td>Many open-source contributions; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a>; Cloudflare Web Analytics respects privacy</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Google Fonts API</strong></td>
+                                            <td>Web font delivery (Montserrat, Open Sans)</td>
+                                            <td>Open source fonts; <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">Google Fonts Privacy FAQ</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Google AdSense</strong></td>
+                                            <td>Advertising platform</td>
+                                            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>; Users can opt out of personalized ads</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>OpenDyslexic Font</strong></td>
+                                            <td>Accessibility font for dyslexia mode</td>
+                                            <td>Free open source font; Licensed under SIL Open Font License</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <p><strong>Commitment to FOSS:</strong> We prioritize Free and Open Source Software wherever possible. Our website code is publicly available on GitHub, and we use FOSS components including:</p>
+                                <ul>
+                                    <li>Open source web fonts (Montserrat, Open Sans, OpenDyslexic)</li>
+                                    <li>Open standards (HTML5, CSS3, JavaScript ES6+)</li>
+                                    <li>Public APIs with transparent data practices</li>
+                                    <li>Privacy-respecting analytics that don't track individual users</li>
+                                </ul>
+                                
+                                <p><strong>Cloudflare Web Analytics:</strong> Unlike traditional analytics, Cloudflare Web Analytics is a privacy-first service that doesn't use cookies or collect personal data. It provides aggregated, anonymized statistics about website traffic. For more information, see <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a>.</p>
+                                
+                                <p><strong>Netlify Analytics:</strong> Netlify Analytics provides privacy-friendly analytics without tracking individual users across the web. It doesn't use cookies and complies with GDPR. For more information, see <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's Privacy Policy</a>.</p>
+                                
+                                <p><strong>Google AdSense:</strong> We use Google AdSense to display advertisements. Google uses cookies to serve ads based on a user's prior visits to our website or other websites. Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -1503,46 +1609,48 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>We retain data only as long as necessary:</p>
-                            <table class="data-table">
-                                <caption>Data Retention Periods</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Data Type</th>
-                                        <th scope="col">Retention Period</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Contact Form Data</td>
-                                        <td>None collected</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cloudflare Analytics Data</td>
-                                        <td>Up to 30 days (aggregated only)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Netlify Analytics Data</td>
-                                        <td>30 days (aggregated only)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Advertising Data (AdSense)</td>
-                                        <td>As per Google AdSense policies (typically up to 18 months)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Server Logs (Netlify)</td>
-                                        <td>As per Netlify's retention policy (typically 30 days)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cloudflare Logs</td>
-                                        <td>As per Cloudflare's retention policy (varies by service)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GitHub Repository Data</td>
-                                        <td>Indefinitely (public code repository)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="pill-content-inner">
+                                <p>We retain data only as long as necessary:</p>
+                                <table class="data-table">
+                                    <caption>Data Retention Periods</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Data Type</th>
+                                            <th scope="col">Retention Period</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Contact Form Data</td>
+                                            <td>None collected</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cloudflare Analytics Data</td>
+                                            <td>Up to 30 days (aggregated only)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Netlify Analytics Data</td>
+                                            <td>30 days (aggregated only)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Advertising Data (AdSense)</td>
+                                            <td>As per Google AdSense policies (typically up to 18 months)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Server Logs (Netlify)</td>
+                                            <td>As per Netlify's retention policy (typically 30 days)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cloudflare Logs</td>
+                                            <td>As per Cloudflare's retention policy (varies by service)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>GitHub Repository Data</td>
+                                            <td>Indefinitely (public code repository)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     
@@ -1552,14 +1660,16 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>Data may be transferred internationally via our service providers:</p>
-                            <ul>
-                                <li><strong>GitHub:</strong> Microsoft Corp. (USA) participates in and has certified its compliance with the EU-U.S. Data Privacy Framework. GitHub's data processing complies with GDPR.</li>
-                                <li><strong>Netlify:</strong> The transfer is safeguarded by Netlify's participation in the EU-U.S. Data Privacy Framework and compliance with GDPR. Netlify processes data through its global CDN network.</li>
-                                <li><strong>Cloudflare:</strong> Cloudflare participates in the EU-U.S. Data Privacy Framework and complies with GDPR. Cloudflare's global network processes data in various locations.</li>
-                                <li><strong>Google Services:</strong> Google LLC participates in and has certified its compliance with the EU-U.S. Data Privacy Framework for Google Fonts and Google AdSense.</li>
-                            </ul>
-                            <p>All our service providers have appropriate safeguards in place for international data transfers and comply with applicable data protection laws.</p>
+                            <div class="pill-content-inner">
+                                <p>Data may be transferred internationally via our service providers:</p>
+                                <ul>
+                                    <li><strong>GitHub:</strong> Microsoft Corp. (USA) participates in and has certified its compliance with the EU-U.S. Data Privacy Framework. GitHub's data processing complies with GDPR.</li>
+                                    <li><strong>Netlify:</strong> The transfer is safeguarded by Netlify's participation in the EU-U.S. Data Privacy Framework and compliance with GDPR. Netlify processes data through its global CDN network.</li>
+                                    <li><strong>Cloudflare:</strong> Cloudflare participates in the EU-U.S. Data Privacy Framework and complies with GDPR. Cloudflare's global network processes data in various locations.</li>
+                                    <li><strong>Google Services:</strong> Google LLC participates in and has certified its compliance with the EU-U.S. Data Privacy Framework for Google Fonts and Google AdSense.</li>
+                                </ul>
+                                <p>All our service providers have appropriate safeguards in place for international data transfers and comply with applicable data protection laws.</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -1569,25 +1679,27 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>Under data protection law, you have rights including:</p>
-                            <ol>
-                                <li><strong>Right of access</strong> - You have the right to ask us for copies of your personal information.</li>
-                                <li><strong>Right to rectification</strong> - You have the right to ask us to rectify personal information you think is inaccurate.</li>
-                                <li><strong>Right to erasure</strong> - You have the right to ask us to erase your personal information in certain circumstances.</li>
-                                <li><strong>Right to restriction of processing</strong> - You have the right to ask us to restrict the processing of your personal information in certain circumstances.</li>
-                                <li><strong>Right to object to processing</strong> - You have the right to object to the processing of your personal information in certain circumstances.</li>
-                                <li><strong>Right to data portability</strong> - You have the right to ask that we transfer the personal information you gave us to another organisation, or to you, in certain circumstances.</li>
-                            </ol>
-                            <p>You are not required to pay any charge for exercising your rights. If you make a request, we have one month to respond to you.</p>
-                            <p>To exercise any of these rights, please contact us at: <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></p>
-                            
-                            <p><strong>Service-Specific Rights:</strong></p>
-                            <ul>
-                                <li><strong>GitHub:</strong> For GitHub-related data, see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></li>
-                                <li><strong>Cloudflare:</strong> For Cloudflare analytics data, see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></li>
-                                <li><strong>Netlify:</strong> For Netlify analytics data, see <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's Privacy Policy</a></li>
-                                <li><strong>Google AdSense:</strong> Manage preferences at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Center</a> or opt out at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a></li>
-                            </ul>
+                            <div class="pill-content-inner">
+                                <p>Under data protection law, you have rights including:</p>
+                                <ol>
+                                    <li><strong>Right of access</strong> - You have the right to ask us for copies of your personal information.</li>
+                                    <li><strong>Right to rectification</strong> - You have the right to ask us to rectify personal information you think is inaccurate.</li>
+                                    <li><strong>Right to erasure</strong> - You have the right to ask us to erase your personal information in certain circumstances.</li>
+                                    <li><strong>Right to restriction of processing</strong> - You have the right to ask us to restrict the processing of your personal information in certain circumstances.</li>
+                                    <li><strong>Right to object to processing</strong> - You have the right to object to the processing of your personal information in certain circumstances.</li>
+                                    <li><strong>Right to data portability</strong> - You have the right to ask that we transfer the personal information you gave us to another organisation, or to you, in certain circumstances.</li>
+                                </ol>
+                                <p>You are not required to pay any charge for exercising your rights. If you make a request, we have one month to respond to you.</p>
+                                <p>To exercise any of these rights, please contact us at: <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></p>
+                                
+                                <p><strong>Service-Specific Rights:</strong></p>
+                                <ul>
+                                    <li><strong>GitHub:</strong> For GitHub-related data, see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></li>
+                                    <li><strong>Cloudflare:</strong> For Cloudflare analytics data, see <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></li>
+                                    <li><strong>Netlify:</strong> For Netlify analytics data, see <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's Privacy Policy</a></li>
+                                    <li><strong>Google AdSense:</strong> Manage preferences at <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google My Ad Center</a> or opt out at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     
@@ -1597,20 +1709,22 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>Our website uses:</p>
-                            <ul>
-                                <li><strong>Essential cookies:</strong> Required for the basic functioning of our website</li>
-                                <li><strong>Privacy-friendly analytics:</strong> Cloudflare Web Analytics and Netlify Analytics do not use cookies - they use privacy-first approaches without tracking individual users</li>
-                                <li><strong>Advertising cookies:</strong> Provided by Google AdSense to display relevant advertisements and measure ad performance</li>
-                            </ul>
-                            
-                            <p><strong>Cloudflare Web Analytics:</strong> This service does not use cookies or collect personal data. It uses a privacy-by-design approach that respects user privacy while providing aggregated website statistics.</p>
-                            
-                            <p><strong>Netlify Analytics:</strong> Unlike traditional analytics, Netlify Analytics doesn't use cookies or collect personal data. It provides aggregated, anonymized statistics without tracking individual users.</p>
-                            
-                            <p><strong>Google AdSense Cookies:</strong> Google uses cookies to serve ads based on a user's prior visits. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
-                            
-                            <p>We ask for consent for non-essential cookies via a cookie banner.</p>
+                            <div class="pill-content-inner">
+                                <p>Our website uses:</p>
+                                <ul>
+                                    <li><strong>Essential cookies:</strong> Required for the basic functioning of our website</li>
+                                    <li><strong>Privacy-friendly analytics:</strong> Cloudflare Web Analytics and Netlify Analytics do not use cookies - they use privacy-first approaches without tracking individual users</li>
+                                    <li><strong>Advertising cookies:</strong> Provided by Google AdSense to display relevant advertisements and measure ad performance</li>
+                                </ul>
+                                
+                                <p><strong>Cloudflare Web Analytics:</strong> This service does not use cookies or collect personal data. It uses a privacy-by-design approach that respects user privacy while providing aggregated website statistics.</p>
+                                
+                                <p><strong>Netlify Analytics:</strong> Unlike traditional analytics, Netlify Analytics doesn't use cookies or collect personal data. It provides aggregated, anonymized statistics without tracking individual users.</p>
+                                
+                                <p><strong>Google AdSense Cookies:</strong> Google uses cookies to serve ads based on a user's prior visits. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+                                
+                                <p>We ask for consent for non-essential cookies via a cookie banner.</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -1620,8 +1734,10 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
-                            <p>All changes to this policy are tracked in our public GitHub repository, maintaining transparency about our privacy practices.</p>
+                            <div class="pill-content-inner">
+                                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+                                <p>All changes to this policy are tracked in our public GitHub repository, maintaining transparency about our privacy practices.</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -1631,11 +1747,13 @@
                             <span class="pill-icon" aria-hidden="true">+</span>
                         </div>
                         <div class="pill-content">
-                            <p>If you have any questions about this Privacy Policy, please contact us:</p>
-                            <ul>
-                                <li>By email: <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></li>
-                                <li>View our source code on GitHub: <a href="https://github.com/GreenMeansBoldPolitics" target="_blank" rel="noopener noreferrer">GreenMeans GitHub Repository</a></li>
-                            </ul>
+                            <div class="pill-content-inner">
+                                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                                <ul>
+                                    <li>By email: <a href="mailto:admin@greenmeans.ovh">admin@greenmeans.ovh</a></li>
+                                    <li>View our source code on GitHub: <a href="https://github.com/KittySaysRawr" target="_blank" rel="noopener noreferrer">GreenMeans GitHub Repository</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1658,11 +1776,39 @@
                 <p class="copyright">© 2025 GreenMeans. All rights reserved.</p>
             </div>
             
-            <!-- Moved Dyslexia toggle to below copyright -->
-            <div class="accessibility-toggle">
-                <button class="toggle-btn" id="dyslexia-toggle" aria-pressed="false">
-                    Dyslexia-Friendly Mode: OFF
+            <!-- Accessibility Dropdown in Footer -->
+            <div class="accessibility-section">
+                <button class="accessibility-btn" id="accessibility-btn" aria-expanded="false" aria-haspopup="true">
+                    Accessibility Options
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
                 </button>
+                
+                <div class="accessibility-dropdown" id="accessibility-dropdown" aria-hidden="true">
+                    <h3>Accessibility Settings</h3>
+                    <div class="accessibility-options">
+                        <div class="accessibility-option">
+                            <div class="theme-toggle-dropdown">
+                                <span class="toggle-label" id="light-label-dropdown">Light</span>
+                                <label class="toggle-switch-dropdown">
+                                    <input type="checkbox" id="theme-toggle-dropdown" aria-label="Toggle between light and dark mode">
+                                    <span class="toggle-slider-dropdown"></span>
+                                </label>
+                                <span class="toggle-label" id="dark-label-dropdown">Dark</span>
+                            </div>
+                        </div>
+                        
+                        <div class="accessibility-option">
+                            <div class="dyslexia-toggle-dropdown">
+                                <label for="dyslexia-toggle-dropdown">Dyslexia-Friendly Mode</label>
+                                <button class="dyslexia-toggle-btn" id="dyslexia-toggle-dropdown">
+                                    OFF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
