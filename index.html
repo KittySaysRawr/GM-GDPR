@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Privacy Policy for GreenMeans. We are committed to protecting your privacy and ensuring transparency about how we handle your data.">
-    <title>Privacy Policy – GreenMeans</title>
+    <title>GreenMeans - Privacy Policy</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -1122,12 +1122,12 @@
             
             // Apply the saved theme
             document.documentElement.setAttribute('data-theme', currentTheme);
-            themeToggle.checked = currentTheme === 'light'; // Inverted for dark default
+            themeToggle.checked = currentTheme === 'dark'; // Inverted for dark default
             updateToggleLabels(currentTheme);
             
             // Toggle theme when switch is clicked
             themeToggle.addEventListener('change', function() {
-                const newTheme = this.checked ? 'light' : 'dark';
+                const newTheme = this.checked ? 'dark' : 'light';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
                 updateToggleLabels(newTheme);
@@ -1281,7 +1281,7 @@
                 }
             }
             
-            // Initialize pills after DOM is loaded
+            // Initialise pills after DOM is loaded
             setTimeout(initializePills, 100);
             
             // Back to top functionality
@@ -1384,10 +1384,9 @@
                 <!-- Embedded Green Party Logo -->
                 <svg class="logo" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logo-title logo-desc">
                     <title id="logo-title">GreenMeans Logo</title>
-                    <desc id="logo-desc">Green leaf icon with the text GreenMeans Bold Politics</desc>
+                    <desc id="logo-desc">Green leaf icon with the text GreenMeans</desc>
                     <image href="https://greenmeans.ovh/favicon.png" x="10" y="15" width="40" height="30" alt="" />
-                    <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#008040" class="logo-text">GreenMeans</text>
-                    <text x="65" y="50" font-family="Montserrat, sans-serif" font-weight="400" font-size="12" fill="#F0F0F0" class="logo-subtext">Bold Politics</text>
+                    <text x="65" y="35" font-family="Montserrat, sans-serif" font-weight="700" font-size="18" fill="#008040" class="logo-text">GreenMeans:</text>
                 </svg>
             </div>
             
@@ -1418,7 +1417,7 @@
             </div>
             
             <div class="privacy-content">
-                <p class="last-updated"><strong>Last updated:</strong> 5/5/2026</p>
+                <p class="last-updated"><strong>Last updated:</strong> 10/5/2026</p>
                 
                 <div class="privacy-pills">
                     <div class="privacy-pill">
@@ -1517,7 +1516,7 @@
                                         <tr>
                                             <td>Version Control</td>
                                             <td>Legitimate Interest</td>
-                                            <td>To manage website code using GitHub's FOSS platform</td>
+                                            <td>To manage website code using GitHub's platform</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1566,7 +1565,7 @@
                                     </tbody>
                                 </table>
                                 
-                                <p><strong>Commitment to FOSS:</strong> We prioritize Free and Open Source Software wherever possible. Our website code is publicly available on GitHub, and we use FOSS components including:</p>
+                                <p><strong>Commitment to FOSS:</strong> We prioritise Free and Open Source Software wherever possible. Our website code is publicly available on GitHub, and we use FOSS components including:</p>
                                 <ul>
                                     <li>Open source web fonts (Montserrat, Open Sans, OpenDyslexic)</li>
                                     <li>Open standards (HTML5, CSS3, JavaScript ES6+)</li>
@@ -1574,7 +1573,7 @@
                                     <li>Privacy-respecting analytics that don't track individual users</li>
                                 </ul>
                                 
-                                <p><strong>Cloudflare Web Analytics:</strong> Unlike traditional analytics, Cloudflare Web Analytics is a privacy-first service that doesn't use cookies or collect personal data. It provides aggregated, anonymized statistics about website traffic. For more information, see <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a>.</p>
+                                <p><strong>Cloudflare Web Analytics:</strong> Unlike traditional analytics, Cloudflare Web Analytics is a privacy-first service that doesn't use cookies or collect personal data. It provides aggregated, anonymised statistics about website traffic. For more information, see <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a>.</p>
                                 
                             </div>
                         </div>
