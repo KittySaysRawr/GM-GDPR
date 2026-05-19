@@ -385,8 +385,6 @@
             border-collapse: collapse;
             margin: 15px 0;
             font-size: 1rem;
-            overflow-x: auto;
-            display: block;
         }
         
         .data-table caption {
@@ -402,11 +400,10 @@
             padding: 12px 15px;
             text-align: left;
             vertical-align: top;
-            min-width: 120px;
         }
         
         .data-table th {
-            background-color: var(--card-bg);
+            background-color: var(--pill-hover);
             color: var(--text-color);
             font-weight: 700;
             font-size: 1.05rem;
@@ -418,6 +415,57 @@
         
         .data-table td {
             color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            .data-table, 
+            .data-table thead, 
+            .data-table tbody, 
+            .data-table th, 
+            .data-table td, 
+            .data-table tr { 
+                display: block; 
+            }
+            
+            .data-table thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            .data-table tr { 
+                margin-bottom: 15px;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            .data-table td { 
+                border: none;
+                border-bottom: 1px solid var(--border-color); 
+                position: relative;
+                padding: 35px 15px 15px 15px;
+                overflow-wrap: anywhere;
+            }
+            
+            .data-table td:last-child {
+                border-bottom: none;
+            }
+            
+            .data-table td:before { 
+                position: absolute;
+                top: 10px;
+                left: 15px;
+                width: calc(100% - 30px); 
+                padding-right: 10px; 
+                white-space: normal;
+                content: attr(data-label);
+                font-weight: 700;
+                color: var(--gp-green);
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                display: block;
+            }
         }
         
         /* Collapsible Pills */
@@ -832,16 +880,6 @@
             
             .privacy-content {
                 padding: 25px;
-            }
-            
-            .data-table {
-                font-size: 0.95rem;
-            }
-            
-            .data-table th,
-            .data-table td {
-                padding: 12px 15px;
-                min-width: 120px;
             }
             
             .pill-header {
@@ -1526,29 +1564,29 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Contact Forms</td>
-                                            <td>None</td>
-                                            <td>We do not collect personal data through contact forms</td>
+                                            <td data-label="Data Type">Contact Forms</td>
+                                            <td data-label="Collection Status">None</td>
+                                            <td data-label="Details">We do not collect personal data through contact forms</td>
                                         </tr>
                                         <tr>
-                                            <td>User Accounts</td>
-                                            <td>None</td>
-                                            <td>We do not offer user registration or accounts</td>
+                                            <td data-label="Data Type">User Accounts</td>
+                                            <td data-label="Collection Status">None</td>
+                                            <td data-label="Details">We do not offer user registration or accounts</td>
                                         </tr>
                                         <tr>
-                                            <td>Newsletter</td>
-                                            <td>None</td>
-                                            <td>We do not operate a newsletter service</td>
+                                            <td data-label="Data Type">Newsletter</td>
+                                            <td data-label="Collection Status">None</td>
+                                            <td data-label="Details">We do not operate a newsletter service</td>
                                         </tr>
                                         <tr>
-                                            <td>Comments</td>
-                                            <td>None</td>
-                                            <td>No commenting features are available on our website</td>
+                                            <td data-label="Data Type">Comments</td>
+                                            <td data-label="Collection Status">None</td>
+                                            <td data-label="Details">No commenting features are available on our website</td>
                                         </tr>
                                         <tr>
-                                            <td>Technical Data</td>
-                                            <td>Limited</td>
-                                            <td>We do not use bloated analytics. We use privacy-friendly analytics via Cloudflare Web Analytics, which respects user privacy.</td>
+                                            <td data-label="Data Type">Technical Data</td>
+                                            <td data-label="Collection Status">Limited</td>
+                                            <td data-label="Details">We do not use bloated analytics. We use privacy-friendly analytics via Cloudflare Web Analytics, which respects user privacy.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1575,29 +1613,29 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Website Analytics</td>
-                                            <td><a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Consent (Art. 6(1)(a))</a> or <a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Legitimate Interest (Art. 6(1)(f))</a></td>
-                                            <td>To analyse website traffic using privacy-first analytics (Cloudflare) that doesn't use cookies or track individual users.</td>
+                                            <td data-label="Purpose">Website Analytics</td>
+                                            <td data-label="Lawful Basis (UK GDPR)"><a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Consent (Art. 6(1)(a))</a> or <a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Legitimate Interest (Art. 6(1)(f))</a></td>
+                                            <td data-label="Details">To analyse website traffic using privacy-first analytics (Cloudflare) that doesn't use cookies or track individual users.</td>
                                         </tr>
                                         <tr>
-                                            <td>Website Hosting & Security</td>
-                                            <td><a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Legitimate Interest (Art. 6(1)(f))</a></td>
-                                            <td>To host, secure, and serve our website via GitHub with Cloudflare CDN and DDoS protection.</td>
+                                            <td data-label="Purpose">Website Hosting & Security</td>
+                                            <td data-label="Lawful Basis (UK GDPR)"><a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Legitimate Interest (Art. 6(1)(f))</a></td>
+                                            <td data-label="Details">To host, secure, and serve our website via GitHub with Cloudflare CDN and DDoS protection.</td>
                                         </tr>
                                         <tr>
-                                            <td>User Preferences (LocalSense)</td>
-                                            <td><a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Legitimate Interest (Art. 6(1)(f))</a></td>
-                                            <td>To store your accessibility settings (e.g. dark mode, font choices) locally on your device using localStorage. This data stays on your device and is not sent to our servers.</td>
+                                            <td data-label="Purpose">User Preferences (LocalSense)</td>
+                                            <td data-label="Lawful Basis (UK GDPR)"><a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Legitimate Interest (Art. 6(1)(f))</a></td>
+                                            <td data-label="Details">To store your accessibility settings (e.g. dark mode, font choices) locally on your device using localStorage. This data stays on your device and is not sent to our servers.</td>
                                         </tr>
                                         <tr>
-                                            <td>Version Control</td>
-                                            <td><a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Legitimate Interest (Art. 6(1)(f))</a></td>
-                                            <td>To manage website code using GitHub's platform.</td>
+                                            <td data-label="Purpose">Version Control</td>
+                                            <td data-label="Lawful Basis (UK GDPR)"><a href="https://www.legislation.gov.uk/eur/2016/679/article/6" target="_blank" rel="noopener noreferrer">Legitimate Interest (Art. 6(1)(f))</a></td>
+                                            <td data-label="Details">To manage website code using GitHub's platform.</td>
                                         </tr>
                                     </tbody>
                                 </table>
 
-                                <p><strong>Statutory/Contractual Requirements:</strong> You are under no statutory or contractual obligation to provide any personal data to us. Failure to provide techincal data (such as IP addresses required for CDN delivery) may result in the website being inaccessible.</p>
+                                <p><strong>Statutory/Contractual Requirements:</strong> You are under no statutory or contractual obligation to provide any personal data to us. Failure to provide technical data (such as IP addresses required for CDN delivery) may result in the website being inaccessible.</p>
                                 
                                 <p><strong>Automated Decision-Making & Profiling:</strong> We do not use any form of automated decision-making or profiling on this website.</p>
                             </div>
@@ -1623,29 +1661,29 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><strong>GitHub</strong></td>
-                                            <td>Version control and code hosting for our website's source code</td>
-                                            <td>Built on open source; Our code is publicly available; <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></td>
+                                            <td data-label="Service"><strong>GitHub</strong></td>
+                                            <td data-label="Purpose">Version control and code hosting for our website's source code</td>
+                                            <td data-label="FOSS/Privacy Status">Built on open source; Our code is publicly available; <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Cloudflare</strong></td>
-                                            <td>CDN, DNS, DDoS protection, and Web Analytics</td>
-                                            <td>Many open-source contributions; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a>; Cloudflare Web Analytics respects privacy</td>
+                                            <td data-label="Service"><strong>Cloudflare</strong></td>
+                                            <td data-label="Purpose">CDN, DNS, DDoS protection, and Web Analytics</td>
+                                            <td data-label="FOSS/Privacy Status">Many open-source contributions; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a>; Cloudflare Web Analytics respects privacy</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Google Fonts API</strong></td>
-                                            <td>Web font delivery (Space Grotesk, Inter)</td>
-                                            <td>Open source fonts; <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">Google Fonts Privacy FAQ</a></td>
+                                            <td data-label="Service"><strong>Google Fonts API</strong></td>
+                                            <td data-label="Purpose">Web font delivery (Space Grotesk, Inter)</td>
+                                            <td data-label="FOSS/Privacy Status">Open source fonts; <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">Google Fonts Privacy FAQ</a></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>OpenDyslexic Font</strong></td>
-                                            <td>Accessibility font for dyslexia mode</td>
-                                            <td>Free open source font; Licensed under SIL Open Font License</td>
+                                            <td data-label="Service"><strong>OpenDyslexic Font</strong></td>
+                                            <td data-label="Purpose">Accessibility font for dyslexia mode</td>
+                                            <td data-label="FOSS/Privacy Status">Free open source font; Licensed under SIL Open Font License</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>LocalSense (localStorage)</strong></td>
-                                            <td>Client-side storage for accessibility settings</td>
-                                            <td>Privacy-first; Data remains exclusively on user's device; No tracking or server-side storage</td>
+                                            <td data-label="Service"><strong>LocalSense (localStorage)</strong></td>
+                                            <td data-label="Purpose">Client-side storage for accessibility settings</td>
+                                            <td data-label="FOSS/Privacy Status">Privacy-first; Data remains exclusively on user's device; No tracking or server-side storage</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1682,20 +1720,20 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Contact Form Data</td>
-                                            <td>None collected</td>
+                                            <td data-label="Data Type">Contact Form Data</td>
+                                            <td data-label="Retention Period">None collected</td>
                                         </tr>
                                         <tr>
-                                            <td>Cloudflare Analytics Data</td>
-                                            <td>Up to 30 days (aggregated only)</td>
+                                            <td data-label="Data Type">Cloudflare Analytics Data</td>
+                                            <td data-label="Retention Period">Up to 30 days (aggregated only)</td>
                                         </tr>
                                         <tr>
-                                            <td>Cloudflare Logs</td>
-                                            <td>As per Cloudflare's retention policy (varies by service)</td>
+                                            <td data-label="Data Type">Cloudflare Logs</td>
+                                            <td data-label="Retention Period">As per Cloudflare's retention policy (varies by service)</td>
                                         </tr>
                                         <tr>
-                                            <td>GitHub Repository Data</td>
-                                            <td>Indefinitely (public code repository)</td>
+                                            <td data-label="Data Type">GitHub Repository Data</td>
+                                            <td data-label="Retention Period">Indefinitely (public code repository)</td>
                                         </tr>
                                     </tbody>
                                 </table>
